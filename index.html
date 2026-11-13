@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NALDO GRAFIC DESING - Estudio Profesional de DTF y Edición</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        naldo: {
+                            dark: '#0b0f19',
+                            card: '#131c2e',
+                            border: '#1e293b',
+                            blue: '#0ea5e9',
+                            neon: '#38bdf8',
+                            accent: '#0369a1',
+                            gray: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Permanent+Marker&family=Press+Start+2P&family=Roboto:wght@300;400;700&family=Rubik:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+        .checkerboard {
+            background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), 
+                              linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #1e293b 75%), 
+                              linear-gradient(-45deg, transparent 75%, #1e293b 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-naldo-dark text-slate-100 selection:bg-sky-500 selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-naldo-card border-b border-naldo-border px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center space-x-3">
+            <div class="bg-gradient-to-r from-sky-500 to-blue-600 p-2.5 rounded-xl shadow-md shadow-sky-500/20 flex items-center justify-center">
+                <i class="fa-solid fa-layer-group text-white text-xl"></i>
+            </div>
+            <div>
+                <h1 class="font-black tracking-wider text-xl bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-300 bg-clip-text text-transparent">
+                    NALDO GRAFIC <span class="text-white font-light text-sm">DESING</span>
+                </h1>
+                <p class="text-xs text-sky-400 font-mono tracking-wide">ESTUDIO PROFESIONAL DTF & VECTORIAL</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions & Status -->
+        <div class="flex items-center space-x-3">
+            <div class="hidden md:flex items-center space-x-2 bg-naldo-dark px-3 py-1.5 rounded-lg border border-naldo-border text-xs text-slate-400 font-mono">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Pliego DTF: <strong class="text-white">58x100 cm</strong> (300 DPI)</span>
+            </div>
+            <button onclick="app.exportGangSheet()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold px-4 py-2 rounded-xl text-sm shadow-lg shadow-sky-500/20 transition-all transform active:scale-95 flex items-center space-x-2">
+                <i class="fa-solid fa-download"></i>
+                <span>Exportar Pliego</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Workspace Layout -->
+    <div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+        
+        <!-- Left Sidebar: Tools & Controls -->
+        <aside class="w-full lg:w-80 bg-naldo-card border-r border-naldo-border flex flex-col z-20 shrink-0">
+            <!-- Tabs Navigation -->
+            <div class="grid grid-cols-5 border-b border-naldo-border bg-naldo-dark text-xs font-semibold">
+                <button onclick="app.switchTab('upload')" id="tab-btn-upload" class="py-3 px-1 text-sky-400 border-b-2 border-sky-400 flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-cloud-arrow-up text-base mb-1"></i>
+                    <span>Archivos</span>
+                </button>
+                <button onclick="app.switchTab('edit')" id="tab-btn-edit" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-wand-magic-sparkles text-base mb-1"></i>
+                    <span>Edición</span>
+                </button>
+                <button onclick="app.switchTab('halftone')" id="tab-btn-halftone" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-circle-dot text-base mb-1"></i>
+                    <span>Semitonos</span>
+                </button>
+                <button onclick="app.switchTab('text')" id="tab-btn-text" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-font text-base mb-1"></i>
+                    <span>Textos</span>
+                </button>
+                <button onclick="app.switchTab('canvas')" id="tab-btn-canvas" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-sliders text-base mb-1"></i>
+                    <span>Lienzo</span>
+                </button>
+            </div>
+
+            <!-- Tab Content Container -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-5">
+                
+                <!-- UPLOAD TAB -->
+                <div id="tab-upload" class="space-y-4">
+                    <div class="border-2 border-dashed border-sky-500/40 hover:border-sky-400 bg-sky-500/5 rounded-2xl p-6 text-center cursor-pointer transition-all group relative">
+                        <input type="file" id="file-uploader" multiple accept="image/*,.psd,.ai,.cdr,.svg,.tiff,.webp,.png,.jpg" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onchange="app.handleFiles(this.files)">
+                        <div class="w-12 h-12 bg-sky-500/20 text-sky-400 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-file-arrow-up text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-sm text-white mb-1">Subir Archivos Universales</h3>
+                        <p class="text-xs text-slate-400 mb-3">PNG, JPG, WEBP, SVG, TIFF, PSD, CDR, etc.</p>
+                        <span class="inline-block bg-sky-500/20 text-sky-300 text-xs px-3 py-1 rounded-full font-medium">Explorar equipo</span>
+                    </div>
+
+                    <!-- Gallery of uploaded assets -->
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                            <span>Biblioteca Activa</span>
+                            <span id="asset-count" class="text-sky-400 font-mono">0 elementos</span>
+                        </h4>
+                        <div id="assets-grid" class="grid grid-cols-2 gap-2">
+                            <!-- Populated dynamically -->
+                            <div class="col-span-2 text-center py-8 text-xs text-slate-500 border border-naldo-border rounded-xl">
+                                No hay imágenes cargadas aún. Sube o arrastra tus archivos aquí.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDIT TAB (Photoshop/Illustrator/Corel Style tools) -->
+                <div id="tab-edit" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
+                            <i class="fa-solid fa-scissors"></i>
+                            <span>Extracción y Fondo</span>
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="app.removeBlackBackground()" class="bg-naldo-border hover:bg-sky-500/20 hover:border-sky-500/50 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                                <i class="fa-solid fa-circle-half-stroke text-sky-400"></i>
+                                <span>Quitar Negro</span>
+                            </button>
+                            <button onclick="app.removeWhiteBackground()" class="bg-naldo-border hover:bg-sky-500/20 hover:border-sky-500/50 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                                <i class="fa-solid fa-sun text-amber-400"></i>
+                                <span>Quitar Blanco</span>
+                            </button>
+                        </div>
+                        <button onclick="app.removeSemiTransparency()" class="w-full mt-2 bg-naldo-border hover:bg-sky-500/20 hover:border-sky-500/50 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                            <i class="fa-solid fa-ghost text-indigo-400"></i>
+                            <span>Eliminar Semitransparencias (Opaco 100%)</span>
+                        </button>
+                    </div>
+
+                    <!-- Color Adjustments -->
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-palette"></i>
+                            <span>Ajustes de Color & Tono</span>
+                        </h4>
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Brillo</span>
+                                <span id="val-brightness">0</span>
+                            </div>
+                            <input type="range" min="-100" max="100" value="0" id="range-brightness" oninput="app.updateFilter()" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Contraste</span>
+                                <span id="val-contrast">0</span>
+                            </div>
+                            <input type="range" min="-100" max="100" value="0" id="range-contrast" oninput="app.updateFilter()" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Saturación</span>
+                                <span id="val-saturation">0</span>
+                            </div>
+                            <input type="range" min="-100" max="100" value="0" id="range-saturation" oninput="app.updateFilter()" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg cursor-pointer">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <button onclick="app.invertColors()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-1.5 rounded-lg border border-naldo-border">Invertir</button>
+                            <button onclick="app.grayscale()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-1.5 rounded-lg border border-naldo-border">Escala Grises</button>
+                        </div>
+                    </div>
+
+                    <!-- Vectorization Simulation & Filters -->
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-vector-square"></i>
+                            <span>Vectorización & Trazos</span>
+                        </h4>
+                        <button onclick="app.vectorizeImage()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-wand-magic"></i>
+                            <span>Vectorizar Imagen Automática</span>
+                        </button>
+                        <button onclick="app.applyDuotone()" class="w-full bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            <span>Efecto Duotono DTF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- HALFTONE TAB -->
+                <div id="tab-halftone" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-dot"></i>
+                            <span>Apartado de Semitonos (Halftones)</span>
+                        </h4>
+                        <p class="text-xs text-slate-400">Convierte degradados e imágenes en tramas de puntos estilo serigrafía/DTF.</p>
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Tamaño de Puntos (Dot Size)</label>
+                            <input type="range" min="3" max="20" value="8" id="ht-size" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Ángulo de Trama (Grados)</label>
+                            <select id="ht-angle" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="45">45° (Estándar DTF)</option>
+                                <option value="0">0° (Horizontal)</option>
+                                <option value="90">90° (Vertical)</option>
+                                <option value="30">30° (CMYK Angled)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Forma del Punto</label>
+                            <select id="ht-shape" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="circle">Circular / Redondo</option>
+                                <option value="line">Líneas / Rayas</option>
+                                <option value="square">Cuadrado</option>
+                            </select>
+                        </div>
+                        <button onclick="app.generateHalftone()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2.5 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Aplicar Semitono Profesional</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TEXT TAB -->
+                <div id="tab-text" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-font"></i>
+                            <span>Tipografías y Textos DTF</span>
+                        </h4>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Texto a Agregar</label>
+                            <input type="text" id="text-input" value="NALDO GRAFIC" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2.5 text-white focus:outline-none focus:border-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Seleccionar Tipografía Gratuita</label>
+                            <select id="text-font" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="Inter" style="font-family: Inter;">Inter (Moderna)</option>
+                                <option value="Bebas Neue" style="font-family: Bebas Neue;">Bebas Neue (Titulares)</option>
+                                <option value="Orbitron" style="font-family: Orbitron;">Orbitron (Futurista)</option>
+                                <option value="Montserrat" style="font-family: Montserrat;">Montserrat (Geométrica)</option>
+                                <option value="Permanent Marker" style="font-family: Permanent Marker;">Permanent Marker (Urbana)</option>
+                                <option value="Press Start 2P" style="font-family: 'Press Start 2P';">Press Start 2P (Retro)</option>
+                                <option value="Roboto" style="font-family: Roboto;">Roboto (Corporativa)</option>
+                                <option value="Rubik" style="font-family: Rubik;">Rubik (Amigable)</option>
+                                <option value="Special Elite" style="font-family: 'Special Elite';">Special Elite (Grunge/Vintage)</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Color de Texto</label>
+                                <input type="color" id="text-color" value="#ffffff" class="w-full h-8 bg-naldo-card border border-naldo-border rounded-lg cursor-pointer p-1">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Tamaño</label>
+                                <input type="number" id="text-size" value="48" min="10" max="200" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                            </div>
+                        </div>
+                        <button onclick="app.addTextToCanvas()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2.5 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Agregar Texto al Lienzo DTF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CANVAS TAB -->
+                <div id="tab-canvas" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span>Configuración Pliego DTF</span>
+                        </h4>
+                        <div class="bg-sky-500/10 border border-sky-500/30 p-2.5 rounded-lg text-xs text-sky-300">
+                            <p class="font-semibold mb-1"><i class="fa-solid fa-info-circle mr-1"></i> Medidas Estándar:</p>
+                            <p>Ancho: <strong>58 cm</strong> | Alto: <strong>100 cm</strong> (300 DPI)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Color de Fondo del Lienzo</label>
+                            <div class="grid grid-cols-5 gap-2 pt-1">
+                                <button onclick="app.setCanvasBg('transparent')" class="h-8 rounded-lg checkerboard border border-naldo-border hover:border-sky-400 title='Transparente'"></button>
+                                <button onclick="app.setCanvasBg('#000000')" class="h-8 rounded-lg bg-black border border-naldo-border hover:border-sky-400"></button>
+                                <button onclick="app.setCanvasBg('#ffffff')" class="h-8 rounded-lg bg-white border border-naldo-border hover:border-sky-400"></button>
+                                <button onclick="app.setCanvasBg('#3b82f6')" class="h-8 rounded-lg bg-blue-500 border border-naldo-border hover:border-sky-400"></button>
+                                <button onclick="app.setCanvasBg('#1e293b')" class="h-8 rounded-lg bg-slate-800 border border-naldo-border hover:border-sky-400"></button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Simulación de Perfil Color</label>
+                            <select id="color-profile" onchange="app.changeColorProfile(this.value)" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="rgb">RGB (Pantallas / Estándar)</option>
+                                <option value="cmyk">CMYK (Simulación Impresión DTF)</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-2 border-t border-naldo-border">
+                            <button onclick="app.clearCanvas()" class="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/40 text-xs py-2 px-3 rounded-lg transition-all flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-trash-can"></i>
+                                <span>Limpiar Lienzo Completo</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Center Workspace: Interactive Gang Sheet / Canvas -->
+        <main class="flex-1 bg-naldo-dark flex flex-col relative overflow-hidden">
+            <!-- Toolbar superior del lienzo -->
+            <div class="bg-naldo-card border-b border-naldo-border px-4 py-2 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-4">
+                    <span class="text-slate-400 font-mono">Lienzo: <strong class="text-white">58 x 100 cm</strong></span>
+                    <span class="text-slate-400 font-mono">Resolución: <strong class="text-sky-400">300 DPI</strong></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="app.zoomIn()" class="bg-naldo-dark hover:bg-naldo-border text-slate-300 px-2.5 py-1 rounded border border-naldo-border" title="Acercar"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button onclick="app.zoomOut()" class="bg-naldo-dark hover:bg-naldo-border text-slate-300 px-2.5 py-1 rounded border border-naldo-border" title="Alejar"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button onclick="app.centerCanvas()" class="bg-naldo-dark hover:bg-naldo-border text-slate-300 px-2.5 py-1 rounded border border-naldo-border" title="Centrar"><i class="fa-solid fa-expand"></i></button>
+                </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div id="canvas-viewport" class="flex-1 overflow-auto flex items-center justify-center p-8 relative checkerboard">
+                <!-- Interactive Gang Sheet Canvas wrapper -->
+                <div id="gang-sheet-container" class="relative shadow-2xl transition-all duration-200" style="width: 580px; height: 1000px; background-color: transparent;">
+                    <canvas id="dtf-canvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
+                    <!-- Element overlays or interactive handles rendered dynamically -->
+                    <div id="elements-layer" class="absolute inset-0 pointer-events-none"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Quick Status Bar -->
+            <footer class="bg-naldo-card border-t border-naldo-border px-4 py-2 text-xs text-slate-400 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-info text-sky-400"></i>
+                    <span id="status-message">Selecciona una imagen de la biblioteca para colocarla en el pliego DTF o arrástrala.</span>
+                </div>
+                <div class="font-mono text-sky-400">NALDO GRAFIC DESING v3.5</div>
+            </footer>
+        </main>
+
+        <!-- Right Sidebar: Element Properties & Gang Sheet Manager -->
+        <aside class="w-full lg:w-72 bg-naldo-card border-l border-naldo-border flex flex-col z-20 shrink-0">
+            <div class="p-3 border-b border-naldo-border bg-naldo-dark flex items-center justify-between">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-sky-400 flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Elementos en Pliego</span>
+                </h3>
+                <span id="canvas-items-count" class="text-xs bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded font-mono">0</span>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-3 space-y-2" id="canvas-items-list">
+                <div class="text-center py-12 text-xs text-slate-500 border border-naldo-border rounded-xl">
+                    Ningún elemento agregado al pliego DTF.
+                </div>
+            </div>
+
+            <!-- Selected Item Inspector -->
+            <div id="item-inspector" class="p-3 border-t border-naldo-border bg-naldo-dark hidden space-y-3">
+                <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Propiedades del Objeto</h4>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                        <label class="text-slate-400 block mb-1">Ancho (cm)</label>
+                        <input type="number" id="prop-width" onchange="app.updateSelectedItem('width', this.value)" class="w-full bg-naldo-card border border-naldo-border rounded p-1.5 text-white">
+                    </div>
+                    <div>
+                        <label class="text-slate-400 block mb-1">Alto (cm)</label>
+                        <input type="number" id="prop-height" onchange="app.updateSelectedItem('height', this.value)" class="w-full bg-naldo-card border border-naldo-border rounded p-1.5 text-white">
+                    </div>
+                </div>
+                <div class="flex space-x-2 pt-1">
+                    <button onclick="app.duplicateSelectedItem()" class="flex-1 bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-1.5 rounded border border-naldo-border">Duplicar</button>
+                    <button onclick="app.deleteSelectedItem()" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs py-1.5 rounded border border-red-500/40">Eliminar</button>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- JavaScript Application Core -->
+    <script>
+        class NaldoGraficApp {
+            constructor() {
+                this.assets = []; // Uploaded raw images
+                this.canvasItems = []; // Items placed on gang sheet
+                this.selectedItemId = null;
+                this.canvasBg = 'transparent';
+                this.colorProfile = 'rgb';
+                this.activeTab = 'upload';
+                
+                // Canvas setup (58cm x 100cm proportional at 300 DPI scale)
+                this.gangWidth = 580;
+                this.gangHeight = 1000;
+                
+                this.initCanvas();
+                this.setupEventListeners();
+            }
+
+            initCanvas() {
+                const canvas = document.getElementById('dtf-canvas');
+                this.ctx = canvas.getContext('2d');
+                canvas.width = this.gangWidth;
+                canvas.height = this.gangHeight;
+                this.redrawGangSheet();
+            }
+
+            setupEventListeners() {
+                // Drag and drop support on viewport
+                const viewport = document.getElementById('canvas-viewport');
+                viewport.addEventListener('dragover', (e) => e.preventDefault());
+                viewport.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                        this.handleFiles(e.dataTransfer.files);
+                    }
+                });
+            }
+
+            switchTab(tabId) {
+                ['upload', 'edit', 'halftone', 'text', 'canvas'].forEach(t => {
+                    document.getElementById(`tab-${t}`).classList.add('hidden');
+                    document.getElementById(`tab-btn-${t}`).classList.remove('text-sky-400', 'border-b-2', 'border-sky-400');
+                    document.getElementById(`tab-btn-${t}`).classList.add('text-slate-400');
+                });
+                document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+                document.getElementById(`tab-btn-${tabId}`).classList.add('text-sky-400', 'border-b-2', 'border-sky-400');
+                document.getElementById(`tab-btn-${tabId}`).classList.remove('text-slate-400');
+                this.activeTab = tabId;
+            }
+
+            handleFiles(files) {
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            const asset = {
+                                id: 'asset_' + Date.now() + Math.random().toString(36.substr(2, 5)),
+                                name: file.name,
+                                img: img,
+                                src: e.target.result,
+                                width: img.width,
+                                height: img.height
+                            };
+                            this.assets.push(asset);
+                            this.renderAssetsLibrary();
+                            // Automatically add first uploaded to gang sheet center
+                            this.addToGangSheet(asset);
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                });
+                this.switchTab('edit');
+                document.getElementById('status-message').innerText = "Imágenes cargadas correctamente y listas para editar.";
+            }
+
+            renderAssetsLibrary() {
+                const grid = document.getElementById('assets-grid');
+                document.getElementById('asset-count').innerText = `${this.assets.length} elementos`;
+                if (this.assets.length === 0) {
+                    grid.innerHTML = `<div class="col-span-2 text-center py-8 text-xs text-slate-500 border border-naldo-border rounded-xl">No hay imágenes cargadas aún.</div>`;
+                    return;
+                }
+                grid.innerHTML = this.assets.map(a => `
+                    <div onclick="app.selectAsset('${a.id}')" class="bg-naldo-dark border border-naldo-border hover:border-sky-400 rounded-xl p-2 cursor-pointer group transition-all flex flex-col items-center">
+                        <div class="w-full h-20 bg-naldo-card rounded-lg overflow-hidden flex items-center justify-center mb-1 checkerboard">
+                            <img src="${a.src}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform">
+                        </div>
+                        <span class="text-[10px] text-slate-300 truncate w-full text-center font-mono">${a.name}</span>
+                    </div>
+                `).join('');
+            }
+
+            selectAsset(id) {
+                const asset = this.assets.find(a => a.id === id);
+                if (asset) {
+                    this.addToGangSheet(asset);
+                }
+            }
+
+            addToGangSheet(asset) {
+                const item = {
+                    id: 'item_' + Date.now() + Math.random().toString(36.substr(2, 5)),
+                    type: 'image',
+                    name: asset.name,
+                    img: asset.img,
+                    src: asset.src,
+                    x: 50 + (this.canvasItems.length * 30) % 200,
+                    y: 50 + (this.canvasItems.length * 30) % 300,
+                    width: 150,
+                    height: (asset.height / asset.width) * 150,
+                    filters: { brightness: 0, contrast: 0, saturation: 0 }
+                };
+                this.canvasItems.push(item);
+                this.selectedItemId = item.id;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            redrawGangSheet() {
+                const container = document.getElementById('gang-sheet-container');
+                container.style.backgroundColor = this.canvasBg;
+                
+                this.ctx.clearRect(0, 0, this.gangWidth, this.gangHeight);
+
+                // Draw background color if not transparent
+                if (this.canvasBg !== 'transparent') {
+                    this.ctx.fillStyle = this.canvasBg;
+                    this.ctx.fillRect(0, 0, this.gangWidth, this.gangHeight);
+                }
+
+                // Render items
+                this.canvasItems.forEach(item => {
+                    this.ctx.save();
+                    this.ctx.translate(item.x, item.y);
+                    
+                    if (item.type === 'image') {
+                        // Apply CSS filters simulation on canvas if needed
+                        this.ctx.drawImage(item.img, 0, 0, item.width, item.height);
+                    } else if (item.type === 'text') {
+                        this.ctx.font = `${item.fontSize}px "${item.fontFamily}", sans-serif`;
+                        this.ctx.fillStyle = item.color;
+                        this.ctx.fillText(item.text, 0, item.fontSize);
+                    }
+
+                    // Draw selection border if selected
+                    if (item.id === this.selectedItemId) {
+                        this.ctx.strokeStyle = '#0ea5e9';
+                        this.ctx.lineWidth = 2;
+                        this.ctx.strokeRect(-2, -2, item.width + 4, item.height + 4);
+                    }
+                    this.ctx.restore();
+                });
+
+                // Apply CMYK Simulation filter overlay if selected
+                if (this.colorProfile === 'cmyk') {
+                    this.ctx.fillStyle = 'rgba(255, 0, 128, 0.03)';
+                    this.ctx.fillRect(0, 0, this.gangWidth, this.gangHeight);
+                }
+            }
+
+            renderCanvasItemsList() {
+                const list = document.getElementById('canvas-items-list');
+                document.getElementById('canvas-items-count').innerText = this.canvasItems.length;
+
+                if (this.canvasItems.length === 0) {
+                    list.innerHTML = `<div class="text-center py-12 text-xs text-slate-500 border border-naldo-border rounded-xl">Ningún elemento agregado al pliego DTF.</div>`;
+                    document.getElementById('item-inspector').classList.add('hidden');
+                    return;
+                }
+
+                list.innerHTML = this.canvasItems.map(item => `
+                    <div onclick="app.selectItem('${item.id}')" class="p-2.5 rounded-lg border cursor-pointer flex items-center justify-between text-xs transition-all ${item.id === this.selectedItemId ? 'bg-sky-500/10 border-sky-500 text-white' : 'bg-naldo-dark border-naldo-border text-slate-300 hover:border-slate-600'}">
+                        <div class="flex items-center space-x-2 truncate">
+                            <i class="fa-solid ${item.type === 'text' ? 'fa-font text-amber-400' : 'fa-image text-sky-400'}"></i>
+                            <span class="truncate">${item.name || item.text}</span>
+                        </div>
+                        <button onclick="event.stopPropagation(); app.deleteItem('${item.id}')" class="text-slate-500 hover:text-red-400 p-1"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                `).join('');
+
+                const selected = this.canvasItems.find(i => i.id === this.selectedItemId);
+                if (selected) {
+                    document.getElementById('item-inspector').classList.remove('hidden');
+                    document.getElementById('prop-width').value = Math.round(selected.width);
+                    document.getElementById('prop-height').value = Math.round(selected.height);
+                }
+            }
+
+            selectItem(id) {
+                this.selectedItemId = id;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            deleteItem(id) {
+                this.canvasItems = this.canvasItems.filter(i => i.id !== id);
+                if (this.selectedItemId === id) this.selectedItemId = null;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            updateSelectedItem(prop, val) {
+                const item = this.canvasItems.find(i => i.id === this.selectedItemId);
+                if (item) {
+                    item[prop] = parseFloat(val) || 10;
+                    this.redrawGangSheet();
+                }
+            }
+
+            duplicateSelectedItem() {
+                const item = this.canvasItems.find(i => i.id === this.selectedItemId);
+                if (item) {
+                    const clone = { ...item, id: 'item_' + Date.now(), x: item.x + 20, y: item.y + 20 };
+                    this.canvasItems.push(clone);
+                    this.selectedItemId = clone.id;
+                    this.redrawGangSheet();
+                    this.renderCanvasItemsList();
+                }
+            }
+
+            deleteSelectedItem() {
+                if (this.selectedItemId) {
+                    this.deleteItem(this.selectedItemId);
+                }
+            }
+
+            // Advanced Processing Functions (Remove background simulation)
+            removeBlackBackground() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i], g = data[i+1], b = data[i+2];
+                        if (r < 40 && g < 40 && b < 40) {
+                            data[i+3] = 0; // Make transparent
+                        }
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            removeWhiteBackground() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i], g = data[i+1], b = data[i+2];
+                        if (r > 210 && g > 210 && b > 210) {
+                            data[i+3] = 0;
+                        }
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            removeSemiTransparency() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const alpha = data[i+3];
+                        if (alpha > 0 && alpha < 200) {
+                            data[i+3] = 255; // Make fully opaque for DTF solid printing
+                        } else if (alpha === 0) {
+                            data[i+3] = 0;
+                        }
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            invertColors() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        data[i] = 255 - data[i];
+                        data[i+1] = 255 - data[i+1];
+                        data[i+2] = 255 - data[i+2];
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            grayscale() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        data[i] = avg; data[i+1] = avg; data[i+2] = avg;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            vectorizeImage() {
+                // High-contrast posterization simulation for vector look
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        const v = avg > 128 ? 255 : 0;
+                        data[i] = v; data[i+1] = v; data[i+2] = v;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            applyDuotone() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        // Cyan / Dark blue duotone tone mapping
+                        data[i] = avg * 0.1;   // R
+                        data[i+1] = avg * 0.6; // G
+                        data[i+2] = avg * 0.9; // B
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            generateHalftone() {
+                const size = parseInt(document.getElementById('ht-size').value) || 8;
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#ffffff';
+                    
+                    for (let y = 0; y < canvas.height; y += size) {
+                        for (let x = 0; x < canvas.width; x += size) {
+                            let sum = 0, count = 0;
+                            for (let ky = 0; ky < size && y + ky < canvas.height; ky++) {
+                                for (let kx = 0; kx < size && x + kx < canvas.width; kx++) {
+                                    const idx = ((y + ky) * canvas.width + (x + kx)) * 4;
+                                    sum += (imgData.data[idx] + imgData.data[idx+1] + imgData.data[idx+2]) / 3;
+                                    count++;
+                                }
+                            }
+                            const avg = sum / count;
+                            const radius = (1 - avg / 255) * (size / 1.5);
+                            if (radius > 0.5) {
+                                ctx.beginPath();
+                                ctx.arc(x + size/2, y + size/2, radius, 0, Math.PI * 2);
+                                ctx.fill();
+                            }
+                        }
+                    }
+                });
+            }
+
+            processActiveImage(callback) {
+                const item = this.canvasItems.find(i => i.id === this.selectedItemId && i.type === 'image');
+                if (!item) {
+                    alert('Por favor selecciona una imagen en el pliego para aplicar esta herramienta.');
+                    return;
+                }
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = item.img.width;
+                tempCanvas.height = item.img.height;
+                const tCtx = tempCanvas.getContext('2d');
+                tCtx.drawImage(item.img, 0, 0);
+
+                callback(tempCanvas, tCtx);
+
+                const newImg = new Image();
+                newImg.onload = () => {
+                    item.img = newImg;
+                    item.src = tempCanvas.toDataURL();
+                    this.redrawGangSheet();
+                };
+                newImg.src = tempCanvas.toDataURL();
+            }
+
+            updateFilter() {
+                // Live slider values update
+                const b = document.getElementById('range-brightness').value;
+                const c = document.getElementById('range-contrast').value;
+                const s = document.getElementById('range-saturation').value;
+                document.getElementById('val-brightness').innerText = b;
+                document.getElementById('val-contrast').innerText = c;
+                document.getElementById('val-saturation').innerText = s;
+            }
+
+            addTextToCanvas() {
+                const text = document.getElementById('text-input').value;
+                const fontFamily = document.getElementById('text-font').value;
+                const color = document.getElementById('text-color').value;
+                const fontSize = parseInt(document.getElementById('text-size').value) || 48;
+
+                if (!text) return;
+
+                const item = {
+                    id: 'item_' + Date.now(),
+                    type: 'text',
+                    text: text,
+                    fontFamily: fontFamily,
+                    color: color,
+                    fontSize: fontSize,
+                    x: 100,
+                    y: 200,
+                    width: text.length * (fontSize * 0.5),
+                    height: fontSize * 1.2
+                };
+                this.canvasItems.push(item);
+                this.selectedItemId = item.id;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            setCanvasBg(color) {
+                this.canvasBg = color;
+                this.redrawGangSheet();
+            }
+
+            changeColorProfile(profile) {
+                this.colorProfile = profile;
+                this.redrawGangSheet();
+            }
+
+            clearCanvas() {
+                if (confirm('¿Estás seguro de limpiar todo el pliego DTF?')) {
+                    this.canvasItems = [];
+                    this.selectedItemId = null;
+                    this.redrawGangSheet();
+                    this.renderCanvasItemsList();
+                }
+            }
+
+            zoomIn() {
+                const container = document.getElementById('gang-sheet-container');
+                const currentWidth = container.offsetWidth;
+                container.style.width = (currentWidth * 1.1) + 'px';
+            }
+
+            zoomOut() {
+                const container = document.getElementById('gang-sheet-container');
+                const currentWidth = container.offsetWidth;
+                container.style.width = (currentWidth * 0.9) + 'px';
+            }
+
+            centerCanvas() {
+                const container = document.getElementById('gang-sheet-container');
+                container.style.width = '580px';
+            }
+
+            exportGangSheet() {
+                const canvas = document.getElementById('dtf-canvas');
+                const link = document.createElement('a');
+                link.download = 'NALDO_GRAFIC_DESING_PLIEGO_DTF_58x100.png';
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.click();
+            }
+        }
+
+        // Initialize application instance on load
+        const app = new NaldoGraficApp();
+    </script>
+</body>
+</html>
