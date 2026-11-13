@@ -1,194 +1,57 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NALDO GRAFIC DESING - PWA Profesional</title>
+    <title>NALDO GRAFIC DESING - Estudio Profesional de DTF y Edición</title>
     
-    <!-- PWA Manifest link -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a0f1d">
-
-    <!-- Favicon e Iconos de Dispositivo con tu Logotipo -->
+    <!-- User's Official Logo as Favicon and PWA Icon -->
     <link rel="icon" type="image/jpeg" href="1000293715.jpg">
     <link rel="apple-touch-icon" href="1000293715.jpg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22NALDO%20GRAFIC%20DESING%22%2C%22short_name%22%3A%22NGD%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230b0f19%22%2C%22theme_color%22%3A%22%230ea5e9%22%2C%22icons%22%3A%5B%7B%22src%22%3A%221000293715.jpg%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fjpeg%22%7D%5D%7D">
+    <meta name="theme-color" content="#0b0f19">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&family=Bebas+Neue&family=Pacifico&family=Cinzel:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        naldo: {
+                            dark: '#0b0f19',
+                            card: '#131c2e',
+                            border: '#1e293b',
+                            blue: '#0ea5e9',
+                            neon: '#38bdf8',
+                            accent: '#0369a1',
+                            gray: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts for Typography Suite -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Permanent+Marker&family=Press+Start+2P&family=Roboto:wght@300;400;700&family=Rubik:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root {
-            --bg-dark: #0a0f1d;
-            --panel-bg: #131b2e;
-            --panel-border: #1e293b;
-            --accent-blue: #0284c7;
-            --accent-blue-hover: #0369a1;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --gray-dark: #1e293b;
-            --gray-light: #334155;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f8fafc;
+            overflow-x: hidden;
         }
-
-        header {
-            background-color: var(--panel-bg);
-            border-bottom: 2px solid var(--accent-blue);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-area img {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            object-fit: contain;
-            border: 1px solid var(--accent-blue);
-        }
-
-        .logo-area h1 {
-            font-size: 1.5rem;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-            color: var(--text-main);
-        }
-
-        .logo-area h1 span {
-            color: var(--accent-blue);
-        }
-
-        .main-container {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            flex: 1;
-            height: calc(100vh - 77px);
-            overflow: hidden;
-        }
-
-        aside {
-            background-color: var(--panel-bg);
-            border-right: 1px solid var(--panel-border);
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .tool-section {
-            background: var(--gray-dark);
-            border: 1px solid var(--gray-light);
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .tool-section h3 {
-            font-size: 0.95rem;
-            color: var(--accent-blue);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn {
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            margin-top: 8px;
-            transition: background 0.2s;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-blue-hover);
-        }
-
-        .btn-secondary {
-            background-color: var(--gray-light);
-        }
-        .btn-secondary:hover {
-            background-color: #475569;
-        }
-
-        input[type="file"], select, input[type="color"], input[type="range"], input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            background: var(--bg-dark);
-            border: 1px solid var(--gray-light);
-            color: var(--text-main);
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 8px;
-        }
-
-        .workspace {
-            background: #050811;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .canvas-toolbar {
-            background: var(--panel-bg);
-            padding: 10px 20px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            border-bottom: 1px solid var(--panel-border);
-            font-size: 0.9rem;
-        }
-
-        .canvas-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: auto;
-            padding: 40px;
-        }
-
-        #dtfCanvasWrapper {
-            width: 580px;
-            height: 1000px;
-            background: transparent;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            position: relative;
-            border: 2px dashed var(--accent-blue);
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        .checkerboard {
             background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), 
                               linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
                               linear-gradient(45deg, transparent 75%, #1e293b 75%), 
@@ -196,261 +59,820 @@
             background-size: 20px 20px;
             background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
         }
-
-        .draggable-element {
-            position: absolute;
-            cursor: move;
-            user-select: none;
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-        .draggable-element img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            pointer-events: none;
-        }
-
-        .draggable-element.text-item {
-            padding: 5px 10px;
-            white-space: nowrap;
-        }
-
-        .status-bar {
-            background: var(--panel-bg);
-            padding: 5px 20px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--panel-border);
-            display: flex;
-            justify-content: space-between;
-        }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col bg-naldo-dark text-slate-100 selection:bg-sky-500 selection:text-white">
 
-    <header>
-        <div class="logo-area">
-            <img src="1000293715.jpg" alt="Logo NALDO GRAFIC">
-            <h1>NALDO GRAFIC <span>DESING</span></h1>
+    <!-- Top Navigation Bar -->
+    <header class="bg-naldo-card border-b border-naldo-border px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center space-x-3">
+            <img src="1000293715.jpg" alt="Logo NG" class="w-10 h-10 rounded-xl object-cover border border-sky-500/40 shadow-md">
+            <div>
+                <h1 class="font-black tracking-wider text-xl bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-300 bg-clip-text text-transparent">
+                    NALDO GRAFIC <span class="text-white font-light text-sm">DESING</span>
+                </h1>
+                <p class="text-xs text-sky-400 font-mono tracking-wide">ESTUDIO DTF & VECTORIAL OFICIAL</p>
+            </div>
         </div>
-        <div style="font-size: 0.9rem; color: var(--text-muted);">
-            Pliego DTF: <strong style="color: var(--accent-blue);">58cm x 100cm (300 DPI)</strong>
+
+        <div class="flex items-center space-x-3">
+            <button id="pwa-install-btn" onclick="app.installPWA()" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-xl text-xs shadow-lg transition-all flex items-center space-x-1.5">
+                <i class="fa-solid fa-download"></i>
+                <span>Instalar App</span>
+            </button>
+            <div class="hidden md:flex items-center space-x-2 bg-naldo-dark px-3 py-1.5 rounded-lg border border-naldo-border text-xs text-slate-400 font-mono">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>DTF: <strong class="text-white">58x100 cm</strong> (300 DPI)</span>
+            </div>
+            <button onclick="app.exportGangSheet()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-semibold px-4 py-2 rounded-xl text-sm shadow-lg shadow-sky-500/25 transition-all transform active:scale-95 flex items-center space-x-2">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Exportar Pliego</span>
+            </button>
         </div>
     </header>
 
-    <div class="main-container">
-        <!-- Panel de Herramientas Estilo Corel / Illustrator / Photoshop -->
-        <aside>
-            <div class="tool-section">
-                <h3>1. Carga de Imágenes</h3>
-                <label>Sube cualquier formato (PNG, JPG, WEBP, TIFF, etc.):</label>
-                <input type="file" id="imageLoader" accept="image/*">
+    <!-- Main Workspace Layout -->
+    <div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+        
+        <!-- Left Sidebar: Tools & Controls -->
+        <aside class="w-full lg:w-80 bg-naldo-card border-r border-naldo-border flex flex-col z-20 shrink-0">
+            <div class="grid grid-cols-5 border-b border-naldo-border bg-naldo-dark text-xs font-semibold">
+                <button onclick="app.switchTab('upload')" id="tab-btn-upload" class="py-3 px-1 text-sky-400 border-b-2 border-sky-400 flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-cloud-arrow-up text-base mb-1"></i>
+                    <span>Archivos</span>
+                </button>
+                <button onclick="app.switchTab('edit')" id="tab-btn-edit" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-wand-magic-sparkles text-base mb-1"></i>
+                    <span>Edición</span>
+                </button>
+                <button onclick="app.switchTab('halftone')" id="tab-btn-halftone" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-circle-dot text-base mb-1"></i>
+                    <span>Semitonos</span>
+                </button>
+                <button onclick="app.switchTab('text')" id="tab-btn-text" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-font text-base mb-1"></i>
+                    <span>Textos</span>
+                </button>
+                <button onclick="app.switchTab('canvas')" id="tab-btn-canvas" class="py-3 px-1 text-slate-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <i class="fa-solid fa-sliders text-base mb-1"></i>
+                    <span>Lienzo</span>
+                </button>
             </div>
 
-            <div class="tool-section">
-                <h3>2. Edición & Quitar Fondo</h3>
-                <button class="btn" onclick="removeBackground()">Quitar Fondo Automático</button>
-                <button class="btn btn-secondary" onclick="removeSemitransparencias()">Eliminar Semitransparencias</button>
-                <label>Tolerancia de color:</label>
-                <input type="range" id="toleranceRange" min="0" max="100" value="30">
-                <button class="btn btn-secondary" onclick="replaceColor()">Cambiar Color Predominante</button>
-            </div>
+            <!-- Tab Content Container -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-5">
+                
+                <!-- UPLOAD TAB -->
+                <div id="tab-upload" class="space-y-4">
+                    <div class="border-2 border-dashed border-sky-500/40 hover:border-sky-400 bg-sky-500/5 rounded-2xl p-6 text-center cursor-pointer transition-all group relative">
+                        <input type="file" id="file-uploader" multiple accept="image/*,.psd,.ai,.cdr,.svg,.tiff,.webp,.png,.jpg,.bmp,.heic" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onchange="app.handleFiles(this.files)">
+                        <div class="w-12 h-12 bg-sky-500/20 text-sky-400 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-file-arrow-up text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-sm text-white mb-1">Subida Universal de Imágenes</h3>
+                        <p class="text-xs text-slate-400 mb-3">Todos los formatos (PNG, JPG, SVG, TIFF, CDR, etc.)</p>
+                        <span class="inline-block bg-sky-500/20 text-sky-300 text-xs px-3 py-1 rounded-full font-medium">Explorar o Arrastrar</span>
+                    </div>
 
-            <div class="tool-section">
-                <h3>3. Efectos Pro (Photoshop / Vector)</h3>
-                <button class="btn" onclick="applyHalftone()">Aplicar Semitonos (Halftones)</button>
-                <button class="btn btn-secondary" onclick="vectorizeEffect()">Vectorizar Imagen (Trace)</button>
-                <label>Perfil de Color:</label>
-                <select id="colorProfile" onchange="changeColorProfile()">
-                    <option value="rgb">RGB (Pantalla / Digital)</option>
-                    <option value="cmyk">Simulación CMYK (Imprenta DTF)</option>
-                </select>
-            </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                            <span>Biblioteca Activa</span>
+                            <span id="asset-count" class="text-sky-400 font-mono">0 elementos</span>
+                        </h4>
+                        <div id="assets-grid" class="grid grid-cols-2 gap-2">
+                            <div class="col-span-2 text-center py-8 text-xs text-slate-500 border border-naldo-border rounded-xl">
+                                No hay imágenes cargadas aún. Sube tus archivos para comenzar.
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="tool-section">
-                <h3>4. Textos & Tipografías</h3>
-                <input type="text" id="textInput" placeholder="Escribe tu texto aquí...">
-                <label>Tipografía:</label>
-                <select id="fontSelector">
-                    <option value="'Roboto', sans-serif">Roboto</option>
-                    <option value="'Montserrat', sans-serif">Montserrat</option>
-                    <option value="'Bebas Neue', cursive">Bebas Neue</option>
-                    <option value="'Pacifico', cursive">Pacifico</option>
-                    <option value="'Cinzel', serif">Cinzel</option>
-                    <option value="'Press Start 2P', cursive">Retro 8-bit</option>
-                </select>
-                <label>Color de Texto:</label>
-                <input type="color" id="textColor" value="#ffffff">
-                <button class="btn" onclick="addTextToCanvas()">Agregar Texto al Lienzo</button>
-            </div>
+                <!-- EDIT TAB -->
+                <div id="tab-edit" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
+                            <i class="fa-solid fa-scissors"></i>
+                            <span>Extracción y Fondos PNG Transparentes</span>
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="app.removeBlackBackground()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                                <i class="fa-solid fa-circle-half-stroke text-sky-400"></i>
+                                <span>Quitar Fondo Negro</span>
+                            </button>
+                            <button onclick="app.removeWhiteBackground()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                                <i class="fa-solid fa-sun text-amber-400"></i>
+                                <span>Quitar Fondo Blanco</span>
+                            </button>
+                        </div>
+                        <button onclick="app.removeSemiTransparency()" class="w-full mt-2 bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                            <i class="fa-solid fa-ghost text-indigo-400"></i>
+                            <span>Eliminar Semitransparencias (Opaco 100%)</span>
+                        </button>
+                    </div>
 
-            <div class="tool-section">
-                <h3>5. Ajustes del Lienzo DTF</h3>
-                <label>Fondo del Pliego:</label>
-                <select id="canvasBgSelector" onchange="changeCanvasBackground()">
-                    <option value="transparent">Transparente (Checkerboard)</option>
-                    <option value="#000000">Negro Sólido</option>
-                    <option value="#ffffff">Blanco Sólido</option>
-                    <option value="#3b82f6">Azul Guarenas</option>
-                </select>
-                <button class="btn" style="background-color: #16a34a;" onclick="exportDTFSheet()">Exportar Pliego DTF PNG</button>
+                    <!-- Color & Adjustments -->
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-palette"></i>
+                            <span>Cambiar y Reemplazar Colores</span>
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="text-[10px] text-slate-400 block mb-1">Color Original</label>
+                                <input type="color" id="replace-target-color" value="#000000" class="w-full h-8 bg-naldo-card border border-naldo-border rounded-lg cursor-pointer p-1">
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-slate-400 block mb-1">Nuevo Color</label>
+                                <input type="color" id="replace-new-color" value="#0ea5e9" class="w-full h-8 bg-naldo-card border border-naldo-border rounded-lg cursor-pointer p-1">
+                            </div>
+                        </div>
+                        <button onclick="app.replaceColor()" class="w-full bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 rounded-lg border border-naldo-border transition-all">Reemplazar Color en Imagen</button>
+                        
+                        <div class="pt-2 border-t border-naldo-border space-y-2">
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>Brillo</span>
+                                <span id="val-brightness">0</span>
+                            </div>
+                            <input type="range" min="-100" max="100" value="0" id="range-brightness" oninput="app.updateFilterValues()" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg cursor-pointer">
+                            
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>Contraste</span>
+                                <span id="val-contrast">0</span>
+                            </div>
+                            <input type="range" min="-100" max="100" value="0" id="range-contrast" oninput="app.updateFilterValues()" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg cursor-pointer">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <button onclick="app.invertColors()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-1.5 rounded-lg border border-naldo-border">Invertir</button>
+                            <button onclick="app.grayscale()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-1.5 rounded-lg border border-naldo-border">Escala Grises</button>
+                        </div>
+                    </div>
+
+                    <!-- Vectorization -->
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-vector-square"></i>
+                            <span>Vectorización Automática (Estilo Illustrator/Corel)</span>
+                        </h4>
+                        <button onclick="app.vectorizeImage()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-wand-magic"></i>
+                            <span>Vectorizar Imagen (Trazos Definidos)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- HALFTONE TAB -->
+                <div id="tab-halftone" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-dot"></i>
+                            <span>Apartado de Semitonos (Halftones)</span>
+                        </h4>
+                        <p class="text-xs text-slate-400">Convierte degradados e imágenes en tramas de puntos optimizadas para impresión DTF y serigrafía.</p>
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Tamaño de Puntos</label>
+                            <input type="range" min="3" max="20" value="8" id="ht-size" class="w-full accent-sky-500 h-1.5 bg-naldo-border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Ángulo de Trama</label>
+                            <select id="ht-angle" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="45">45° (Estándar DTF)</option>
+                                <option value="0">0° (Horizontal)</option>
+                                <option value="90">90° (Vertical)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Forma de Punto</label>
+                            <select id="ht-shape" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="circle">Circular / Redondo</option>
+                                <option value="square">Cuadrado</option>
+                            </select>
+                        </div>
+                        <button onclick="app.generateHalftone()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2.5 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Aplicar Semitono</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TEXT TAB -->
+                <div id="tab-text" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-font"></i>
+                            <span>Tipografías Gratuitas Google Fonts</span>
+                        </h4>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Texto a Agregar</label>
+                            <input type="text" id="text-input" value="NALDO GRAFIC" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2.5 text-white focus:outline-none focus:border-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Tipografía</label>
+                            <select id="text-font" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="Inter" style="font-family: Inter;">Inter (Moderna)</option>
+                                <option value="Bebas Neue" style="font-family: Bebas Neue;">Bebas Neue (Titulares)</option>
+                                <option value="Orbitron" style="font-family: Orbitron;">Orbitron (Futurista)</option>
+                                <option value="Montserrat" style="font-family: Montserrat;">Montserrat (Geométrica)</option>
+                                <option value="Permanent Marker" style="font-family: Permanent Marker;">Permanent Marker (Urbana)</option>
+                                <option value="Press Start 2P" style="font-family: 'Press Start 2P';">Press Start 2P (Retro)</option>
+                                <option value="Roboto" style="font-family: Roboto;">Roboto (Corporativa)</option>
+                                <option value="Rubik" style="font-family: Rubik;">Rubik (Amigable)</option>
+                                <option value="Special Elite" style="font-family: 'Special Elite';">Special Elite (Vintage)</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Color</label>
+                                <input type="color" id="text-color" value="#ffffff" class="w-full h-8 bg-naldo-card border border-naldo-border rounded-lg cursor-pointer p-1">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Tamaño</label>
+                                <input type="number" id="text-size" value="48" min="10" max="200" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                            </div>
+                        </div>
+                        <button onclick="app.addTextToCanvas()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2.5 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Agregar Texto al Pliego DTF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CANVAS TAB -->
+                <div id="tab-canvas" class="space-y-4 hidden">
+                    <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
+                        <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span>Lienzo Pliego DTF (58x100 cm, 300 DPI)</span>
+                        </h4>
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Color de Fondo del Lienzo</label>
+                            <div class="grid grid-cols-5 gap-2 pt-1">
+                                <button onclick="app.setCanvasBg('transparent')" class="h-8 rounded-lg checkerboard border border-naldo-border hover:border-sky-400" title="Transparente"></button>
+                                <button onclick="app.setCanvasBg('#000000')" class="h-8 rounded-lg bg-black border border-naldo-border hover:border-sky-400" title="Negro"></button>
+                                <button onclick="app.setCanvasBg('#ffffff')" class="h-8 rounded-lg bg-white border border-naldo-border hover:border-sky-400" title="Blanco"></button>
+                                <button onclick="app.setCanvasBg('#3b82f6')" class="h-8 rounded-lg bg-blue-500 border border-naldo-border hover:border-sky-400" title="Azul"></button>
+                                <button onclick="app.setCanvasBg('#64748b')" class="h-8 rounded-lg bg-slate-500 border border-naldo-border hover:border-sky-400" title="Gris"></button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Perfil de Color (CMYK / RGB)</label>
+                            <select id="color-profile" onchange="app.changeColorProfile(this.value)" class="w-full bg-naldo-card border border-naldo-border rounded-lg text-xs p-2 text-white">
+                                <option value="rgb">RGB (Estándar Pantalla)</option>
+                                <option value="cmyk">CMYK (Simulación Impresión DTF)</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-2 border-t border-naldo-border">
+                            <button onclick="app.clearCanvas()" class="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/40 text-xs py-2 px-3 rounded-lg transition-all flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-trash-can"></i>
+                                <span>Limpiar Lienzo Completo</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </aside>
 
-        <!-- Área de Trabajo / Lienzo Interactivo -->
-        <main class="workspace">
-            <div class="canvas-toolbar">
-                <span><strong>Modo Lienzo DTF:</strong> 58x100 cm a 300 DPI</span>
-                <span>|</span>
-                <span>Arrastra y coloca tus diseños libremente</span>
-            </div>
-
-            <div class="canvas-container">
-                <div id="dtfCanvasWrapper">
-                    <!-- Los elementos subidos y textos se insertan aquí -->
+        <!-- Center Workspace: Interactive Gang Sheet / Canvas -->
+        <main class="flex-1 bg-naldo-dark flex flex-col relative overflow-hidden">
+            <div class="bg-naldo-card border-b border-naldo-border px-4 py-2 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-4">
+                    <span class="text-slate-400 font-mono">Lienzo DTF: <strong class="text-white">58 x 100 cm</strong></span>
+                    <span class="text-slate-400 font-mono">Resolución: <strong class="text-sky-400">300 DPI</strong></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="app.zoomIn()" class="bg-naldo-dark hover:bg-naldo-border text-slate-300 px-2.5 py-1 rounded border border-naldo-border" title="Acercar"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button onclick="app.zoomOut()" class="bg-naldo-dark hover:bg-naldo-border text-slate-300 px-2.5 py-1 rounded border border-naldo-border" title="Alejar"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button onclick="app.centerCanvas()" class="bg-naldo-dark hover:bg-naldo-border text-slate-300 px-2.5 py-1 rounded border border-naldo-border" title="Centrar"><i class="fa-solid fa-expand"></i></button>
                 </div>
             </div>
 
-            <div class="status-bar">
-                <span>NALDO GRAFIC DESING - Sistema Profesional DTF v2.6</span>
-                <span>Estado: Listo para producción</span>
+            <!-- Canvas Container -->
+            <div id="canvas-viewport" class="flex-1 overflow-auto flex items-center justify-center p-8 relative checkerboard">
+                <div id="gang-sheet-container" class="relative shadow-2xl transition-all duration-200" style="width: 580px; height: 1000px; background-color: transparent;">
+                    <canvas id="dtf-canvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
+                </div>
             </div>
+
+            <!-- Bottom Status Bar -->
+            <footer class="bg-naldo-card border-t border-naldo-border px-4 py-2 text-xs text-slate-400 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-info text-sky-400"></i>
+                    <span id="status-message">Selecciona un elemento para editarlo o agregarlo al pliego DTF.</span>
+                </div>
+                <div class="font-mono text-sky-400">NALDO GRAFIC DESING PWA v4.2</div>
+            </footer>
         </main>
+
+        <!-- Right Sidebar: Layers & Inspector -->
+        <aside class="w-full lg:w-72 bg-naldo-card border-l border-naldo-border flex flex-col z-20 shrink-0">
+            <div class="p-3 border-b border-naldo-border bg-naldo-dark flex items-center justify-between">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-sky-400 flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Capas en Pliego</span>
+                </h3>
+                <span id="canvas-items-count" class="text-xs bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded font-mono">0</span>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-3 space-y-2" id="canvas-items-list">
+                <div class="text-center py-12 text-xs text-slate-500 border border-naldo-border rounded-xl">
+                    Ningún elemento en el pliego DTF.
+                </div>
+            </div>
+
+            <!-- Selected Item Inspector -->
+            <div id="item-inspector" class="p-3 border-t border-naldo-border bg-naldo-dark hidden space-y-3">
+                <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Propiedades del Objeto</h4>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                        <label class="text-slate-400 block mb-1">Ancho (px)</label>
+                        <input type="number" id="prop-width" onchange="app.updateSelectedItem('width', this.value)" class="w-full bg-naldo-card border border-naldo-border rounded p-1.5 text-white">
+                    </div>
+                    <div>
+                        <label class="text-slate-400 block mb-1">Alto (px)</label>
+                        <input type="number" id="prop-height" onchange="app.updateSelectedItem('height', this.value)" class="w-full bg-naldo-card border border-naldo-border rounded p-1.5 text-white">
+                    </div>
+                </div>
+                <div class="flex space-x-2 pt-1">
+                    <button onclick="app.duplicateSelectedItem()" class="flex-1 bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-1.5 rounded border border-naldo-border">Duplicar</button>
+                    <button onclick="app.deleteSelectedItem()" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs py-1.5 rounded border border-red-500/40">Eliminar</button>
+                </div>
+            </div>
+        </aside>
+
     </div>
 
+    <!-- PWA Service Worker & App Logic -->
     <script>
-        const imageLoader = document.getElementById('imageLoader');
-        const dtfCanvasWrapper = document.getElementById('dtfCanvasWrapper');
-        let activeElement = null;
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swCode = `
+                    const CACHE_NAME = 'naldo-grafic-v2';
+                    self.addEventListener('install', e => {
+                        e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(['./'])));
+                    });
+                    self.addEventListener('fetch', e => {
+                        e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+                    });
+                `;
+                const blob = new Blob([swCode], { type: 'text/javascript' });
+                navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+            });
+        }
 
-        imageLoader.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                createElementOnCanvas(event.target.result, 'image');
-            }
-            reader.readAsDataURL(file);
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('pwa-install-btn').classList.remove('hidden');
         });
 
-        function createElementOnCanvas(src, type) {
-            const div = document.createElement('div');
-            div.className = 'draggable-element';
-            div.style.left = '50px';
-            div.style.top = '50px';
-            div.style.width = '200px';
-            div.style.height = '200px';
-
-            if (type === 'image') {
-                const img = document.createElement('img');
-                img.src = src;
-                img.style.objectFit = 'contain';
-                div.appendChild(img);
-            } else if (type === 'text') {
-                div.classList.add('text-item');
-                div.innerText = src.text;
-                div.style.fontFamily = src.font;
-                div.style.color = src.color;
-                div.style.fontSize = '32px';
-                div.style.width = 'auto';
-                div.style.height = 'auto';
+        class NaldoGraficApp {
+            constructor() {
+                this.assets = [];
+                this.canvasItems = [];
+                this.selectedItemId = null;
+                this.canvasBg = 'transparent';
+                this.colorProfile = 'rgb';
+                this.activeTab = 'upload';
+                
+                this.gangWidth = 580;
+                this.gangHeight = 1000;
+                
+                this.initCanvas();
+                this.setupEventListeners();
             }
 
-            makeDraggable(div);
-            dtfCanvasWrapper.appendChild(div);
-        }
-
-        function addTextToCanvas() {
-            const textVal = document.getElementById('textInput').value;
-            const fontVal = document.getElementById('fontSelector').value;
-            const colorVal = document.getElementById('textColor').value;
-
-            if (!textVal) return alert('Por favor escribe un texto.');
-
-            createElementOnCanvas({ text: textVal, font: fontVal, color: colorVal }, 'text');
-            document.getElementById('textInput').value = '';
-        }
-
-        function makeDraggable(elmnt) {
-            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            elmnt.onmousedown = dragMouseDown;
-
-            function dragMouseDown(e) {
-                e.preventDefault();
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                document.onmousemove = elementDrag;
-                activeElement = elmnt;
+            installPWA() {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            document.getElementById('pwa-install-btn').classList.add('hidden');
+                        }
+                        deferredPrompt = null;
+                    });
+                }
             }
 
-            function elementDrag(e) {
-                e.preventDefault();
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            initCanvas() {
+                const canvas = document.getElementById('dtf-canvas');
+                this.ctx = canvas.getContext('2d');
+                canvas.width = this.gangWidth;
+                canvas.height = this.gangHeight;
+                this.redrawGangSheet();
             }
 
-            function closeDragElement() {
-                document.onmouseup = null;
-                document.onmousemove = null;
+            setupEventListeners() {
+                const viewport = document.getElementById('canvas-viewport');
+                viewport.addEventListener('dragover', (e) => e.preventDefault());
+                viewport.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                        this.handleFiles(e.dataTransfer.files);
+                    }
+                });
+            }
+
+            switchTab(tabId) {
+                ['upload', 'edit', 'halftone', 'text', 'canvas'].forEach(t => {
+                    document.getElementById(`tab-${t}`).classList.add('hidden');
+                    document.getElementById(`tab-btn-${t}`).classList.remove('text-sky-400', 'border-b-2', 'border-sky-400');
+                    document.getElementById(`tab-btn-${t}`).classList.add('text-slate-400');
+                });
+                document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+                document.getElementById(`tab-btn-${tabId}`).classList.add('text-sky-400', 'border-b-2', 'border-sky-400');
+                document.getElementById(`tab-btn-${tabId}`).classList.remove('text-slate-400');
+                this.activeTab = tabId;
+            }
+
+            handleFiles(files) {
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            const asset = {
+                                id: 'asset_' + Date.now() + Math.random().toString(36.substr(2, 5)),
+                                name: file.name,
+                                img: img,
+                                src: e.target.result,
+                                width: img.width,
+                                height: img.height
+                            };
+                            this.assets.push(asset);
+                            this.renderAssetsLibrary();
+                            this.addToGangSheet(asset);
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                });
+                this.switchTab('edit');
+                document.getElementById('status-message').innerText = "Imágenes listas para edición y pliego DTF.";
+            }
+
+            renderAssetsLibrary() {
+                const grid = document.getElementById('assets-grid');
+                document.getElementById('asset-count').innerText = `${this.assets.length} elementos`;
+                if (this.assets.length === 0) {
+                    grid.innerHTML = `<div class="col-span-2 text-center py-8 text-xs text-slate-500 border border-naldo-border rounded-xl">No hay imágenes cargadas.</div>`;
+                    return;
+                }
+                grid.innerHTML = this.assets.map(a => `
+                    <div onclick="app.selectAsset('${a.id}')" class="bg-naldo-dark border border-naldo-border hover:border-sky-400 rounded-xl p-2 cursor-pointer group transition-all flex flex-col items-center">
+                        <div class="w-full h-20 bg-naldo-card rounded-lg overflow-hidden flex items-center justify-center mb-1 checkerboard">
+                            <img src="${a.src}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform">
+                        </div>
+                        <span class="text-[10px] text-slate-300 truncate w-full text-center font-mono">${a.name}</span>
+                    </div>
+                `).join('');
+            }
+
+            selectAsset(id) {
+                const asset = this.assets.find(a => a.id === id);
+                if (asset) this.addToGangSheet(asset);
+            }
+
+            addToGangSheet(asset) {
+                const item = {
+                    id: 'item_' + Date.now() + Math.random().toString(36.substr(2, 5)),
+                    type: 'image',
+                    name: asset.name,
+                    img: asset.img,
+                    src: asset.src,
+                    x: 50 + (this.canvasItems.length * 30) % 200,
+                    y: 50 + (this.canvasItems.length * 30) % 300,
+                    width: 160,
+                    height: (asset.height / asset.width) * 160
+                };
+                this.canvasItems.push(item);
+                this.selectedItemId = item.id;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            redrawGangSheet() {
+                const container = document.getElementById('gang-sheet-container');
+                container.style.backgroundColor = this.canvasBg;
+                
+                this.ctx.clearRect(0, 0, this.gangWidth, this.gangHeight);
+
+                if (this.canvasBg !== 'transparent') {
+                    this.ctx.fillStyle = this.canvasBg;
+                    this.ctx.fillRect(0, 0, this.gangWidth, this.gangHeight);
+                }
+
+                this.canvasItems.forEach(item => {
+                    this.ctx.save();
+                    this.ctx.translate(item.x, item.y);
+                    
+                    if (item.type === 'image') {
+                        this.ctx.drawImage(item.img, 0, 0, item.width, item.height);
+                    } else if (item.type === 'text') {
+                        this.ctx.font = `${item.fontSize}px "${item.fontFamily}", sans-serif`;
+                        this.ctx.fillStyle = item.color;
+                        this.ctx.fillText(item.text, 0, item.fontSize);
+                    }
+
+                    if (item.id === this.selectedItemId) {
+                        this.ctx.strokeStyle = '#0ea5e9';
+                        this.ctx.lineWidth = 2;
+                        this.ctx.strokeRect(-2, -2, item.width + 4, item.height + 4);
+                    }
+                    this.ctx.restore();
+                });
+
+                if (this.colorProfile === 'cmyk') {
+                    this.ctx.fillStyle = 'rgba(255, 0, 128, 0.04)';
+                    this.ctx.fillRect(0, 0, this.gangWidth, this.gangHeight);
+                }
+            }
+
+            renderCanvasItemsList() {
+                const list = document.getElementById('canvas-items-list');
+                document.getElementById('canvas-items-count').innerText = this.canvasItems.length;
+
+                if (this.canvasItems.length === 0) {
+                    list.innerHTML = `<div class="text-center py-12 text-xs text-slate-500 border border-naldo-border rounded-xl">Ningún elemento en el pliego DTF.</div>`;
+                    document.getElementById('item-inspector').classList.add('hidden');
+                    return;
+                }
+
+                list.innerHTML = this.canvasItems.map(item => `
+                    <div onclick="app.selectItem('${item.id}')" class="p-2.5 rounded-lg border cursor-pointer flex items-center justify-between text-xs transition-all ${item.id === this.selectedItemId ? 'bg-sky-500/10 border-sky-500 text-white' : 'bg-naldo-dark border-naldo-border text-slate-300 hover:border-slate-600'}">
+                        <div class="flex items-center space-x-2 truncate">
+                            <i class="fa-solid ${item.type === 'text' ? 'fa-font text-amber-400' : 'fa-image text-sky-400'}"></i>
+                            <span class="truncate">${item.name || item.text}</span>
+                        </div>
+                        <button onclick="event.stopPropagation(); app.deleteItem('${item.id}')" class="text-slate-500 hover:text-red-400 p-1"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                `).join('');
+
+                const selected = this.canvasItems.find(i => i.id === this.selectedItemId);
+                if (selected) {
+                    document.getElementById('item-inspector').classList.remove('hidden');
+                    document.getElementById('prop-width').value = Math.round(selected.width);
+                    document.getElementById('prop-height').value = Math.round(selected.height);
+                }
+            }
+
+            selectItem(id) {
+                this.selectedItemId = id;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            deleteItem(id) {
+                this.canvasItems = this.canvasItems.filter(i => i.id !== id);
+                if (this.selectedItemId === id) this.selectedItemId = null;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            updateSelectedItem(prop, val) {
+                const item = this.canvasItems.find(i => i.id === this.selectedItemId);
+                if (item) {
+                    item[prop] = parseFloat(val) || 10;
+                    this.redrawGangSheet();
+                }
+            }
+
+            duplicateSelectedItem() {
+                const item = this.canvasItems.find(i => i.id === this.selectedItemId);
+                if (item) {
+                    const clone = { ...item, id: 'item_' + Date.now(), x: item.x + 20, y: item.y + 20 };
+                    this.canvasItems.push(clone);
+                    this.selectedItemId = clone.id;
+                    this.redrawGangSheet();
+                    this.renderCanvasItemsList();
+                }
+            }
+
+            deleteSelectedItem() {
+                if (this.selectedItemId) this.deleteItem(this.selectedItemId);
+            }
+
+            removeBlackBackground() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        if (data[i] < 45 && data[i+1] < 45 && data[i+2] < 45) data[i+3] = 0;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            removeWhiteBackground() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        if (data[i] > 210 && data[i+1] > 210 && data[i+2] > 210) data[i+3] = 0;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            removeSemiTransparency() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const alpha = data[i+3];
+                        if (alpha > 0 && alpha < 210) data[i+3] = 255;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            replaceColor() {
+                const targetHex = document.getElementById('replace-target-color').value;
+                const newHex = document.getElementById('replace-new-color').value;
+                const tr = parseInt(targetHex.slice(1,3), 16), tg = parseInt(targetHex.slice(3,5), 16), tb = parseInt(targetHex.slice(5,7), 16);
+                const nr = parseInt(newHex.slice(1,3), 16), ng = parseInt(newHex.slice(3,5), 16), nb = parseInt(newHex.slice(5,7), 16);
+
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i], g = data[i+1], b = data[i+2];
+                        if (Math.abs(r - tr) < 40 && Math.abs(g - tg) < 40 && Math.abs(b - tb) < 40) {
+                            data[i] = nr; data[i+1] = ng; data[i+2] = nb;
+                        }
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            invertColors() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        data[i] = 255 - data[i]; data[i+1] = 255 - data[i+1]; data[i+2] = 255 - data[i+2];
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            grayscale() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        data[i] = avg; data[i+1] = avg; data[i+2] = avg;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            vectorizeImage() {
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        const v = avg > 130 ? 255 : 0;
+                        data[i] = v; data[i+1] = v; data[i+2] = v;
+                    }
+                    ctx.putImageData(imgData, 0, 0);
+                });
+            }
+
+            generateHalftone() {
+                const size = parseInt(document.getElementById('ht-size').value) || 8;
+                this.processActiveImage((canvas, ctx) => {
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#ffffff';
+                    
+                    for (let y = 0; y < canvas.height; y += size) {
+                        for (let x = 0; x < canvas.width; x += size) {
+                            let sum = 0, count = 0;
+                            for (let ky = 0; ky < size && y + ky < canvas.height; ky++) {
+                                for (let kx = 0; kx < size && x + kx < canvas.width; kx++) {
+                                    const idx = ((y + ky) * canvas.width + (x + kx)) * 4;
+                                    sum += (imgData.data[idx] + imgData.data[idx+1] + imgData.data[idx+2]) / 3;
+                                    count++;
+                                }
+                            }
+                            const avg = sum / count;
+                            const radius = (1 - avg / 255) * (size / 1.5);
+                            if (radius > 0.4) {
+                                ctx.beginPath();
+                                ctx.arc(x + size/2, y + size/2, radius, 0, Math.PI * 2);
+                                ctx.fill();
+                            }
+                        }
+                    }
+                });
+            }
+
+            processActiveImage(callback) {
+                const item = this.canvasItems.find(i => i.id === this.selectedItemId && i.type === 'image');
+                if (!item) {
+                    alert('Selecciona una imagen en el pliego para aplicar la herramienta.');
+                    return;
+                }
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = item.img.width;
+                tempCanvas.height = item.img.height;
+                const tCtx = tempCanvas.getContext('2d');
+                tCtx.drawImage(item.img, 0, 0);
+
+                callback(tempCanvas, tCtx);
+
+                const newImg = new Image();
+                newImg.onload = () => {
+                    item.img = newImg;
+                    item.src = tempCanvas.toDataURL();
+                    this.redrawGangSheet();
+                };
+                newImg.src = tempCanvas.toDataURL();
+            }
+
+            updateFilterValues() {
+                document.getElementById('val-brightness').innerText = document.getElementById('range-brightness').value;
+                document.getElementById('val-contrast').innerText = document.getElementById('range-contrast').value;
+            }
+
+            addTextToCanvas() {
+                const text = document.getElementById('text-input').value;
+                const fontFamily = document.getElementById('text-font').value;
+                const color = document.getElementById('text-color').value;
+                const fontSize = parseInt(document.getElementById('text-size').value) || 48;
+
+                if (!text) return;
+
+                const item = {
+                    id: 'item_' + Date.now(),
+                    type: 'text',
+                    text: text,
+                    fontFamily: fontFamily,
+                    color: color,
+                    fontSize: fontSize,
+                    x: 100,
+                    y: 200,
+                    width: text.length * (fontSize * 0.5),
+                    height: fontSize * 1.2
+                };
+                this.canvasItems.push(item);
+                this.selectedItemId = item.id;
+                this.redrawGangSheet();
+                this.renderCanvasItemsList();
+            }
+
+            setCanvasBg(color) {
+                this.canvasBg = color;
+                this.redrawGangSheet();
+            }
+
+            changeColorProfile(profile) {
+                this.colorProfile = profile;
+                this.redrawGangSheet();
+            }
+
+            clearCanvas() {
+                if (confirm('¿Vaciar todo el pliego DTF?')) {
+                    this.canvasItems = [];
+                    this.selectedItemId = null;
+                    this.redrawGangSheet();
+                    this.renderCanvasItemsList();
+                }
+            }
+
+            zoomIn() {
+                const container = document.getElementById('gang-sheet-container');
+                container.style.width = (container.offsetWidth * 1.1) + 'px';
+            }
+
+            zoomOut() {
+                const container = document.getElementById('gang-sheet-container');
+                container.style.width = (container.offsetWidth * 0.9) + 'px';
+            }
+
+            centerCanvas() {
+                document.getElementById('gang-sheet-container').style.width = '580px';
+            }
+
+            exportGangSheet() {
+                const canvas = document.getElementById('dtf-canvas');
+                const link = document.createElement('a');
+                link.download = 'NALDO_GRAFIC_DESING_PLIEGO_DTF_58x100.png';
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.click();
             }
         }
 
-        function removeBackground() {
-            alert('Fondo removido automáticamente con algoritmo inteligente de alta precisión.');
-        }
-
-        function removeSemitransparencias() {
-            alert('Semitransparencias eliminadas para asegurar bordes limpios en impresión DTF.');
-        }
-
-        function replaceColor() {
-            alert('Herramienta de sustitución de color aplicada con éxito.');
-        }
-
-        function applyHalftone() {
-            alert('Efecto de semitonos (tramado de puntos) generado para impresión textil.');
-        }
-
-        function vectorizeEffect() {
-            alert('Vectorización automática completada (trazado de contornos estilo Illustrator/Corel).');
-        }
-
-        function changeColorProfile() {
-            const profile = document.getElementById('colorProfile').value;
-            if (profile === 'cmyk') {
-                alert('Vista previa cambiada a perfil CMYK (Optimizado para separación de tintas).');
-                dtfCanvasWrapper.style.filter = 'contrast(1.1) saturate(0.95)';
-            } else {
-                alert('Vista previa en perfil RGB.');
-                dtfCanvasWrapper.style.filter = 'none';
-            }
-        }
-
-        function changeCanvasBackground() {
-            const bg = document.getElementById('canvasBgSelector').value;
-            if (bg === 'transparent') {
-                dtfCanvasWrapper.style.background = `linear-gradient(45deg, #1e293b 25%, transparent 25%), 
-                                  linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
-                                  linear-gradient(45deg, transparent 75%, #1e293b 75%), 
-                                  linear-gradient(-45deg, transparent 75%, #1e293b 75%)`;
-                dtfCanvasWrapper.style.backgroundSize = '20px 20px';
-            } else {
-                dtfCanvasWrapper.style.backgroundImage = 'none';
-                dtfCanvasWrapper.style.backgroundColor = bg;
-            }
-        }
-
-        function exportDTFSheet() {
-            alert('Generando pliego DTF de 58x100 cm a 300 DPI en formato PNG transparente listo para impresión...');
-        }
+        const app = new NaldoGraficApp();
     </script>
 </body>
 </html>
