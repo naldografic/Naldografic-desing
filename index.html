@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NALDO GRAFIC DESING - Estudio Profesional de DTF y Edición</title>
     
-    <!-- PWA Manifest & Meta Tags -->
+    <!-- User's Official Logo as Favicon and PWA Icon -->
+    <link rel="icon" type="image/jpeg" href="1000293715.jpg">
+    <link rel="apple-touch-icon" href="1000293715.jpg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22NALDO%20GRAFIC%20DESING%22%2C%22short_name%22%3A%22NGD%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230b0f19%22%2C%22theme_color%22%3A%22%230ea5e9%22%2C%22icons%22%3A%5B%7B%22src%22%3A%221000293715.jpg%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fjpeg%22%7D%5D%7D">
     <meta name="theme-color" content="#0b0f19">
-    <meta name="description" content="Estudio Profesional de DTF, Vectorización, Semitonos y Edición de Imágenes NALDO GRAFIC DESING">
-    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22NALDO%20GRAFIC%20DESING%22%2C%22short_name%22%3A%22NALDO%20GRAFIC%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230b0f19%22%2C%22theme_color%22%3A%22%230ea5e9%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fplacehold.co%2F192x192%2F0ea5e9%2Fffffff%3Ftext%3DNGD%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fplacehold.co%2F512x512%2F0ea5e9%2Fffffff%3Ftext%3DNGD%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,8 +38,6 @@
 
     <!-- Google Fonts for Typography Suite -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Permanent+Marker&family=Press+Start+2P&family=Roboto:wght@300;400;700&family=Rubik:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -46,20 +47,10 @@
             color: #f8fafc;
             overflow-x: hidden;
         }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0ea5e9;
-        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
         .checkerboard {
             background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), 
                               linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
@@ -75,18 +66,15 @@
     <!-- Top Navigation Bar -->
     <header class="bg-naldo-card border-b border-naldo-border px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-lg">
         <div class="flex items-center space-x-3">
-            <div class="bg-gradient-to-r from-sky-500 to-blue-600 p-2.5 rounded-xl shadow-md shadow-sky-500/20 flex items-center justify-center">
-                <i class="fa-solid fa-layer-group text-white text-xl"></i>
-            </div>
+            <img src="1000293715.jpg" alt="Logo NG" class="w-10 h-10 rounded-xl object-cover border border-sky-500/40 shadow-md">
             <div>
                 <h1 class="font-black tracking-wider text-xl bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-300 bg-clip-text text-transparent">
                     NALDO GRAFIC <span class="text-white font-light text-sm">DESING</span>
                 </h1>
-                <p class="text-xs text-sky-400 font-mono tracking-wide">ESTUDIO PROFESIONAL DTF & PWA OFFLINE</p>
+                <p class="text-xs text-sky-400 font-mono tracking-wide">ESTUDIO DTF & VECTORIAL OFICIAL</p>
             </div>
         </div>
 
-        <!-- PWA Install & Quick Export -->
         <div class="flex items-center space-x-3">
             <button id="pwa-install-btn" onclick="app.installPWA()" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-2 rounded-xl text-xs shadow-lg transition-all flex items-center space-x-1.5">
                 <i class="fa-solid fa-download"></i>
@@ -96,7 +84,7 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>DTF: <strong class="text-white">58x100 cm</strong> (300 DPI)</span>
             </div>
-            <button onclick="app.exportGangSheet()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold px-4 py-2 rounded-xl text-sm shadow-lg shadow-sky-500/25 transition-all transform active:scale-95 flex items-center space-x-2">
+            <button onclick="app.exportGangSheet()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-semibold px-4 py-2 rounded-xl text-sm shadow-lg shadow-sky-500/25 transition-all transform active:scale-95 flex items-center space-x-2">
                 <i class="fa-solid fa-file-arrow-down"></i>
                 <span>Exportar Pliego</span>
             </button>
@@ -108,7 +96,6 @@
         
         <!-- Left Sidebar: Tools & Controls -->
         <aside class="w-full lg:w-80 bg-naldo-card border-r border-naldo-border flex flex-col z-20 shrink-0">
-            <!-- Tabs Navigation -->
             <div class="grid grid-cols-5 border-b border-naldo-border bg-naldo-dark text-xs font-semibold">
                 <button onclick="app.switchTab('upload')" id="tab-btn-upload" class="py-3 px-1 text-sky-400 border-b-2 border-sky-400 flex flex-col items-center justify-center transition-colors">
                     <i class="fa-solid fa-cloud-arrow-up text-base mb-1"></i>
@@ -143,11 +130,10 @@
                             <i class="fa-solid fa-file-arrow-up text-xl"></i>
                         </div>
                         <h3 class="font-bold text-sm text-white mb-1">Subida Universal de Imágenes</h3>
-                        <p class="text-xs text-slate-400 mb-3">PNG, JPG, WEBP, SVG, TIFF, BMP, etc.</p>
+                        <p class="text-xs text-slate-400 mb-3">Todos los formatos (PNG, JPG, SVG, TIFF, CDR, etc.)</p>
                         <span class="inline-block bg-sky-500/20 text-sky-300 text-xs px-3 py-1 rounded-full font-medium">Explorar o Arrastrar</span>
                     </div>
 
-                    <!-- Gallery of uploaded assets -->
                     <div>
                         <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
                             <span>Biblioteca Activa</span>
@@ -166,25 +152,25 @@
                     <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border">
                         <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
                             <i class="fa-solid fa-scissors"></i>
-                            <span>Extracción y Fondos PNG</span>
+                            <span>Extracción y Fondos PNG Transparentes</span>
                         </h4>
                         <div class="grid grid-cols-2 gap-2">
-                            <button onclick="app.removeBlackBackground()" class="bg-naldo-border hover:bg-sky-500/20 hover:border-sky-500/50 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                            <button onclick="app.removeBlackBackground()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
                                 <i class="fa-solid fa-circle-half-stroke text-sky-400"></i>
-                                <span>Quitar Negro</span>
+                                <span>Quitar Fondo Negro</span>
                             </button>
-                            <button onclick="app.removeWhiteBackground()" class="bg-naldo-border hover:bg-sky-500/20 hover:border-sky-500/50 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                            <button onclick="app.removeWhiteBackground()" class="bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
                                 <i class="fa-solid fa-sun text-amber-400"></i>
-                                <span>Quitar Blanco</span>
+                                <span>Quitar Fondo Blanco</span>
                             </button>
                         </div>
-                        <button onclick="app.removeSemiTransparency()" class="w-full mt-2 bg-naldo-border hover:bg-sky-500/20 hover:border-sky-500/50 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
+                        <button onclick="app.removeSemiTransparency()" class="w-full mt-2 bg-naldo-border hover:bg-sky-500/20 text-slate-200 text-xs py-2 px-3 rounded-lg border border-naldo-border transition-all flex items-center justify-center space-x-1.5">
                             <i class="fa-solid fa-ghost text-indigo-400"></i>
                             <span>Eliminar Semitransparencias (Opaco 100%)</span>
                         </button>
                     </div>
 
-                    <!-- Color Replacement & Adjustments -->
+                    <!-- Color & Adjustments -->
                     <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
                         <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
                             <i class="fa-solid fa-palette"></i>
@@ -192,7 +178,7 @@
                         </h4>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
-                                <label class="text-[10px] text-slate-400 block mb-1">Color a Reemplazar</label>
+                                <label class="text-[10px] text-slate-400 block mb-1">Color Original</label>
                                 <input type="color" id="replace-target-color" value="#000000" class="w-full h-8 bg-naldo-card border border-naldo-border rounded-lg cursor-pointer p-1">
                             </div>
                             <div>
@@ -221,11 +207,11 @@
                         </div>
                     </div>
 
-                    <!-- Vectorization / Illustrator & Corel Tools -->
+                    <!-- Vectorization -->
                     <div class="bg-naldo-dark p-3.5 rounded-xl border border-naldo-border space-y-3">
                         <h4 class="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center space-x-2">
                             <i class="fa-solid fa-vector-square"></i>
-                            <span>Vectorización & Trazado (Estilo Illustrator/Corel)</span>
+                            <span>Vectorización Automática (Estilo Illustrator/Corel)</span>
                         </h4>
                         <button onclick="app.vectorizeImage()" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-xs py-2 px-3 rounded-lg shadow-md transition-all flex items-center justify-center space-x-2">
                             <i class="fa-solid fa-wand-magic"></i>
@@ -241,7 +227,7 @@
                             <i class="fa-solid fa-circle-dot"></i>
                             <span>Apartado de Semitonos (Halftones)</span>
                         </h4>
-                        <p class="text-xs text-slate-400">Convierte degradados e imágenes en tramas de puntos optimizadas para DTF y serigrafía.</p>
+                        <p class="text-xs text-slate-400">Convierte degradados e imágenes en tramas de puntos optimizadas para impresión DTF y serigrafía.</p>
                         
                         <div>
                             <label class="block text-xs text-slate-400 mb-1">Tamaño de Puntos</label>
@@ -352,7 +338,6 @@
 
         <!-- Center Workspace: Interactive Gang Sheet / Canvas -->
         <main class="flex-1 bg-naldo-dark flex flex-col relative overflow-hidden">
-            <!-- Toolbar superior del lienzo -->
             <div class="bg-naldo-card border-b border-naldo-border px-4 py-2 flex items-center justify-between text-xs">
                 <div class="flex items-center space-x-4">
                     <span class="text-slate-400 font-mono">Lienzo DTF: <strong class="text-white">58 x 100 cm</strong></span>
@@ -372,13 +357,13 @@
                 </div>
             </div>
 
-            <!-- Bottom Quick Status Bar -->
+            <!-- Bottom Status Bar -->
             <footer class="bg-naldo-card border-t border-naldo-border px-4 py-2 text-xs text-slate-400 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-circle-info text-sky-400"></i>
                     <span id="status-message">Selecciona un elemento para editarlo o agregarlo al pliego DTF.</span>
                 </div>
-                <div class="font-mono text-sky-400">NALDO GRAFIC DESING PWA v4.0</div>
+                <div class="font-mono text-sky-400">NALDO GRAFIC DESING PWA v4.2</div>
             </footer>
         </main>
 
@@ -420,13 +405,13 @@
 
     </div>
 
-    <!-- PWA Service Worker Registration & App Logic -->
+    <!-- PWA Service Worker & App Logic -->
     <script>
-        // Register Service Worker for PWA Offline Support
+        // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'naldo-grafic-v1';
+                    const CACHE_NAME = 'naldo-grafic-v2';
                     self.addEventListener('install', e => {
                         e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(['./'])));
                     });
@@ -435,14 +420,10 @@
                     });
                 `;
                 const blob = new Blob([swCode], { type: 'text/javascript' });
-                const swUrl = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(swUrl).then(() => {
-                    console.log('NALDO GRAFIC PWA Service Worker registrado con éxito.');
-                }).catch(err => console.log('Error SW:', err));
+                navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
             });
         }
 
-        // Deferred PWA Install Prompt
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -459,7 +440,6 @@
                 this.colorProfile = 'rgb';
                 this.activeTab = 'upload';
                 
-                // 58x100 cm gang sheet proportional scale at 300 DPI
                 this.gangWidth = 580;
                 this.gangHeight = 1000;
                 
@@ -533,7 +513,7 @@
                     reader.readAsDataURL(file);
                 });
                 this.switchTab('edit');
-                document.getElementById('status-message').innerText = "Imágenes subidas y listas para edición profesional.";
+                document.getElementById('status-message').innerText = "Imágenes listas para edición y pliego DTF.";
             }
 
             renderAssetsLibrary() {
@@ -677,13 +657,12 @@
                 if (this.selectedItemId) this.deleteItem(this.selectedItemId);
             }
 
-            // Image Processing & Editing (Photoshop / Corel / Illustrator features)
             removeBlackBackground() {
                 this.processActiveImage((canvas, ctx) => {
                     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     const data = imgData.data;
                     for (let i = 0; i < data.length; i += 4) {
-                        if (data[i] < 40 && data[i+1] < 40 && data[i+2] < 40) data[i+3] = 0;
+                        if (data[i] < 45 && data[i+1] < 45 && data[i+2] < 45) data[i+3] = 0;
                     }
                     ctx.putImageData(imgData, 0, 0);
                 });
@@ -694,7 +673,7 @@
                     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     const data = imgData.data;
                     for (let i = 0; i < data.length; i += 4) {
-                        if (data[i] > 215 && data[i+1] > 215 && data[i+2] > 215) data[i+3] = 0;
+                        if (data[i] > 210 && data[i+1] > 210 && data[i+2] > 210) data[i+3] = 0;
                     }
                     ctx.putImageData(imgData, 0, 0);
                 });
