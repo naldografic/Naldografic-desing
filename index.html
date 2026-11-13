@@ -1,571 +1,650 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NALDO GRAFIC DESING - PWA Profesional DTF</title>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a0f1d">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#00d2ff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>NALDO GRAFIC - Estudio DTF & Capas IA</title>
+  
+  <!-- Ícono y Manifiesto para instalación en Android / APK -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="manifest" href="manifest.json">
 
-    <!-- Favicon e Iconos de Dispositivo con tu Logotipo Oficial -->
-    <link rel="icon" type="image/jpeg" href="1000336830_2.jpg">
-    <link rel="apple-touch-icon" href="1000336830_2.jpg">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --panel-bg: #1e293b;
+      --accent: #00d2ff;
+      --accent-hover: #00a8cc;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
 
-    <!-- Google Fonts para Tipografías Gratuitas -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&family=Bebas+Neue&family=Pacifico&family=Cinzel:wght@700&family=Press+Start+2P&family=Anton&family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-    <style>
-        :root {
-            --bg-dark: #0a0f1d;
-            --panel-bg: #131b2e;
-            --panel-border: #1e293b;
-            --accent-blue: #0284c7;
-            --accent-blue-hover: #0369a1;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --gray-dark: #1e293b;
-            --gray-light: #334155;
-            --danger: #ef4444;
-        }
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      -webkit-overflow-scrolling: touch;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
+    /* Encabezado con Logotipo Oficial */
+    header {
+      background-color: var(--panel-bg);
+      border-bottom: 2px solid var(--accent);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        header {
-            background-color: var(--panel-bg);
-            border-bottom: 2px solid var(--accent-blue);
-            padding: 12px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 65px;
-        }
+    .brand-logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 3px;
+      border: 2px solid var(--accent);
+    }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .brand-title h1 {
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
 
-        .logo-area img {
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            object-fit: contain;
-            border: 1px solid var(--accent-blue);
-        }
+    .brand-title span {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 700;
+      display: block;
+    }
 
-        .logo-area h1 {
-            font-size: 1.3rem;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-            color: var(--text-main);
-        }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
 
-        .logo-area h1 span {
-            color: var(--accent-blue);
-        }
+    .canvas-specs {
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid var(--accent);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
 
-        .main-container {
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            flex: 1;
-            height: calc(100vh - 65px);
-            overflow: hidden;
-        }
+    #btnInstallApp {
+      background: var(--success);
+      color: #fff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none; /* Se muestra automáticamente cuando el navegador permite instalar */
+    }
 
-        aside {
-            background-color: var(--panel-bg);
-            border-right: 1px solid var(--panel-border);
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    /* Contenedor Principal */
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .tool-section {
-            background: var(--gray-dark);
-            border: 1px solid var(--gray-light);
-            padding: 12px;
-            border-radius: 8px;
-        }
+    @media (min-width: 900px) {
+      .app-container {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .controls-column {
+        width: 380px;
+        flex-shrink: 0;
+      }
+      .workspace-column {
+        flex-grow: 1;
+        position: sticky;
+        top: 85px;
+      }
+    }
 
-        .tool-section h3 {
-            font-size: 0.9rem;
-            color: var(--accent-blue);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid var(--panel-border);
-            padding-bottom: 4px;
-        }
+    /* Tarjetas de Herramientas */
+    .card {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
 
-        .btn {
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            width: 100%;
-            margin-top: 6px;
-            transition: background 0.2s;
-            text-align: center;
-            display: inline-block;
-        }
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .btn:hover {
-            background-color: var(--accent-blue-hover);
-        }
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
 
-        .btn-secondary {
-            background-color: var(--gray-light);
-        }
-        .btn-secondary:hover {
-            background-color: #475569;
-        }
+    .file-input-wrapper {
+      display: block;
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px dashed var(--accent);
+      padding: 12px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #fff;
+    }
 
-        .btn-danger {
-            background-color: var(--danger);
-        }
-        .btn-danger:hover {
-            background-color: #dc2626;
-        }
+    input[type="file"] {
+      display: none;
+    }
 
-        input[type="file"], select, input[type="color"], input[type="range"], input[type="text"] {
-            width: 100%;
-            padding: 7px;
-            background: var(--bg-dark);
-            border: 1px solid var(--gray-light);
-            color: var(--text-main);
-            border-radius: 5px;
-            margin-top: 4px;
-            font-size: 0.85rem;
-        }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
 
-        label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 6px;
-        }
+    .btn-primary {
+      background-color: var(--accent);
+      color: #000;
+    }
 
-        .workspace {
-            background: #050811;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
 
-        .canvas-toolbar {
-            background: var(--panel-bg);
-            padding: 8px 20px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            border-bottom: 1px solid var(--panel-border);
-            font-size: 0.85rem;
-        }
+    .btn-secondary {
+      background-color: #334155;
+      color: #fff;
+    }
 
-        .canvas-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: auto;
-            padding: 30px;
-        }
+    .btn-secondary:hover {
+      background-color: #475569;
+    }
 
-        #dtfCanvasWrapper {
-            width: 580px;
-            height: 1000px;
-            position: relative;
-            border: 2px dashed var(--accent-blue);
-            background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), 
-                              linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
-                              linear-gradient(45deg, transparent 75%, #1e293b 75%), 
-                              linear-gradient(-45deg, transparent 75%, #1e293b 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-        }
+    .btn-success {
+      background-color: var(--success);
+      color: #fff;
+    }
 
-        .draggable-element {
-            position: absolute;
-            cursor: move;
-            user-select: none;
-            border: 2px dashed transparent;
-            padding: 2px;
-        }
+    .btn-danger {
+      background-color: var(--danger);
+      color: #fff;
+    }
 
-        .draggable-element.selected {
-            border-color: var(--accent-blue);
-            background: rgba(2, 132, 199, 0.1);
-        }
+    .control-group {
+      margin: 12px 0;
+    }
 
-        .draggable-element img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            pointer-events: none;
-            display: block;
-        }
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
 
-        .draggable-element.text-item {
-            white-space: nowrap;
-            padding: 5px 10px;
-        }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
 
-        .resize-handle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--accent-blue);
-            right: -5px;
-            bottom: -5px;
-            cursor: se-resize;
-            display: none;
-        }
+    /* Área de Lienzo / Vista Previa */
+    .canvas-wrapper {
+      background-color: #1e293b;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .draggable-element.selected .resize-handle {
-            display: block;
-        }
+    .checkerboard {
+      width: 100%;
+      min-height: 320px;
+      max-height: 550px;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background-image: 
+        linear-gradient(45deg, #2a3441 25%, transparent 25%), 
+        linear-gradient(-45deg, #2a3441 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #2a3441 75%), 
+        linear-gradient(-45deg, transparent 75%, #2a3441 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
 
-        .status-bar {
-            background: var(--panel-bg);
-            padding: 6px 20px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--panel-border);
-            display: flex;
-            justify-content: space-between;
-        }
+    canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        .export-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            margin-top: 5px;
-        }
-    </style>
+    .layers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .layer-item {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .layer-color-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid #fff;
+      display: inline-block;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .layer-actions button {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .status-bar {
+      width: 100%;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-area">
-            <img src="1000336830_2.jpg" alt="Logo NALDO GRAFIC">
-            <h1>NALDO GRAFIC <span>DESING</span></h1>
+  <header>
+    <div class="brand">
+      <!-- Logotipo Oficial NALDO GRAFIC -->
+      <img src="logo.png" alt="Logo NALDO GRAFIC" class="brand-logo-img" onerror="this.style.display='none'">
+      <div class="brand-title">
+        <h1>NALDO GRAFIC</h1>
+        <span>DESING STUDIO • RIF V-15578052-1</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="canvas-specs">DTF: 58x100cm | 300 DPI</div>
+      <button id="btnInstallApp">📲 Instalar App</button>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <!-- Columna de Controles -->
+    <div class="controls-column">
+      
+      <!-- 1. Subir Imagen -->
+      <div class="card">
+        <div class="card-title">1. Subir Imagen</div>
+        <p class="card-desc">Acepta PNG, JPG, WEBP, SVG o imágenes guardadas desde la galería.</p>
+        <label class="file-input-wrapper" for="imageUpload">
+          📂 Seleccionar Archivo de Imagen
+        </label>
+        <input type="file" id="imageUpload" accept="image/*">
+        <div id="fileName" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; text-align: center;">
+          Sin archivo seleccionado
         </div>
-        <div style="font-size: 0.85rem; color: var(--text-muted);">
-            Lienzo DTF: <strong style="color: var(--accent-blue);">58x100 cm | 300 DPI</strong>
+      </div>
+
+      <!-- 2. Quitar Fondo & Capas -->
+      <div class="card">
+        <div class="card-title">2. Quitar Fondo & Capas (IA)</div>
+        <p class="card-desc">Elimina el fondo automáticamente o desarma la imagen en capas independientes por color para editarlas.</p>
+        
+        <button class="btn btn-primary" id="btnRemoveBg">
+          ✨ Quitar Fondo Automático
+        </button>
+
+        <div class="control-group">
+          <label>
+            <span>Tolerancia de Recorte / Fondo:</span>
+            <span id="toleranceVal">35</span>
+          </label>
+          <input type="range" id="toleranceSlider" min="5" max="120" value="35">
         </div>
-    </header>
 
-    <div class="main-container">
-        <!-- Panel de Herramientas Completo -->
-        <aside>
-            <div class="tool-section">
-                <h3>1. Subir Imagen</h3>
-                <label>Acepta todos los formatos (PNG, JPG, WEBP, TIFF, etc.):</label>
-                <input type="file" id="imageLoader" accept="image/*">
-            </div>
+        <button class="btn btn-secondary" id="btnSplitLayers">
+          🧩 Desarmar Imagen en Capas (Por Color)
+        </button>
 
-            <div class="tool-section">
-                <h3>2. Quitar Fondo & Capas (IA)</h3>
-                <button class="btn" onclick="removeBackgroundAI()">Quitar Fondo / Separar Sujeto (IA)</button>
-                <button class="btn btn-secondary" onclick="removeSemitransparencias()">Eliminar Semitransparencias</button>
-                <label>Tolerancia de Color:</label>
-                <input type="range" id="toleranceRange" min="0" max="100" value="30">
-                <button class="btn btn-secondary" onclick="replaceColor()">Cambiar Color / Quitar Colores</button>
-            </div>
+        <button class="btn btn-danger" id="btnReset">
+          ↺ Restaurar Imagen Original
+        </button>
 
-            <div class="tool-section">
-                <h3>3. Edición Pro (Corel / Illustrator / Photoshop)</h3>
-                <button class="btn" onclick="applyHalftone()">Crear Semitonos (Halftones)</button>
-                <button class="btn btn-secondary" onclick="vectorizeEffect()">Vectorizar Imagen (Trace)</button>
-                <label>Perfil de Color:</label>
-                <select id="colorProfile" onchange="changeColorProfile()">
-                    <option value="rgb">RGB (Pantalla)</option>
-                    <option value="cmyk">Simulación CMYK (Imprenta DTF)</option>
-                </select>
-            </div>
+        <div id="layersContainer" class="layers-list"></div>
+      </div>
 
-            <div class="tool-section">
-                <h3>4. Textos & Tipografías Gratis</h3>
-                <input type="text" id="textInput" placeholder="Escribe tu texto...">
-                <label>Tipografía:</label>
-                <select id="fontSelector">
-                    <option value="'Roboto', sans-serif">Roboto</option>
-                    <option value="'Montserrat', sans-serif">Montserrat</option>
-                    <option value="'Bebas Neue', cursive">Bebas Neue</option>
-                    <option value="'Pacifico', cursive">Pacifico</option>
-                    <option value="'Cinzel', serif">Cinzel</option>
-                    <option value="'Anton', sans-serif">Anton</option>
-                    <option value="'Lobster', cursive">Lobster</option>
-                    <option value="'Permanent Marker', cursive">Permanent Marker</option>
-                    <option value="'Press Start 2P', cursive">Retro 8-bit</option>
-                </select>
-                <label>Color de Texto:</label>
-                <input type="color" id="textColor" value="#ffffff">
-                <button class="btn" onclick="addTextToCanvas()">Agregar Texto al Lienzo</button>
-            </div>
+      <!-- 3. Exportación Pro -->
+      <div class="card">
+        <div class="card-title">3. Exportación Pro (Corel / Photoshop / DTF)</div>
+        <p class="card-desc">Descarga el diseño limpio con fondo transparente listo para impresión o vectorizado.</p>
+        
+        <button class="btn btn-success" id="btnExportPNG">
+          ⬇️ Descargar PNG Transparente (DTF)
+        </button>
+        <button class="btn btn-secondary" id="btnExportSVG">
+          📐 Exportar Contorno Vectorial (SVG)
+        </button>
+      </div>
 
-            <div class="tool-section">
-                <h3>5. Controles del Objeto Seleccionado</h3>
-                <div style="display: flex; gap: 5px; margin-top: 5px;">
-                    <button class="btn btn-secondary" onclick="rotateElement(-15)">Rotar ↺</button>
-                    <button class="btn btn-secondary" onclick="rotateElement(15)">Rotar ↻</button>
-                </div>
-                <button class="btn btn-danger" onclick="deleteSelectedElement()">Borrar Elemento</button>
-            </div>
-
-            <div class="tool-section">
-                <h3>6. Ajustes de Lienzo & Exportación</h3>
-                <label>Fondo del Pliego:</label>
-                <select id="canvasBgSelector" onchange="changeCanvasBackground()">
-                    <option value="transparent">Transparente (Damero)</option>
-                    <option value="#000000">Negro Sólido</option>
-                    <option value="#ffffff">Blanco Sólido</option>
-                    <option value="#3b82f6">Azul Guarenas</option>
-                </select>
-                
-                <label>Exportar / Descargar Diseño:</label>
-                <div class="export-grid">
-                    <button class="btn" onclick="exportFile('png')">PNG</button>
-                    <button class="btn btn-secondary" onclick="exportFile('jpg')">JPG</button>
-                    <button class="btn btn-secondary" onclick="exportFile('svg')">SVG</button>
-                    <button class="btn btn-secondary" onclick="exportFile('pdf')">PDF</button>
-                    <button class="btn btn-secondary" onclick="exportFile('psd')">PSD</button>
-                    <button class="btn btn-secondary" onclick="exportFile('cdr')">CDR</button>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Área de Trabajo / Lienzo Interactivo -->
-        <main class="workspace">
-            <div class="canvas-toolbar">
-                <span><strong>Modo Pliego DTF:</strong> 58x100 cm (300 DPI)</span>
-                <span>|</span>
-                <span>Haz clic en un elemento para moverlo, rotarlo o redimensionarlo</span>
-            </div>
-
-            <div class="canvas-container" id="canvasContainer">
-                <div id="dtfCanvasWrapper">
-                    <!-- Elementos interactivos -->
-                </div>
-            </div>
-
-            <div class="status-bar">
-                <span>NALDO GRAFIC DESING - Sistema Profesional DTF v3.0</span>
-                <span>Soporte CMYK/RGB Activo</span>
-            </div>
-        </main>
     </div>
 
-    <script>
-        const imageLoader = document.getElementById('imageLoader');
-        const dtfCanvasWrapper = document.getElementById('dtfCanvasWrapper');
-        let selectedElement = null;
-        let currentRotation = 0;
+    <!-- Columna de Vista Previa -->
+    <div class="workspace-column">
+      <div class="canvas-wrapper">
+        <div style="width: 100%; display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-muted);">
+          <span>Vista Previa (Fondo Transparente)</span>
+          <span id="imgDimensions">0 x 0 px</span>
+        </div>
+        <div class="checkerboard">
+          <canvas id="mainCanvas"></canvas>
+        </div>
+        <div class="status-bar" id="statusBar">
+          Listo. Sube una imagen para comenzar a editar.
+        </div>
+      </div>
+    </div>
+  </main>
 
-        imageLoader.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
+  <script>
+    // Lógica de instalación como App en Android
+    let deferredPrompt;
+    const btnInstallApp = document.getElementById('btnInstallApp');
 
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                createElementOnCanvas(event.target.result, 'image');
-            }
-            reader.readAsDataURL(file);
-        });
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      btnInstallApp.style.display = 'inline-block';
+    });
 
-        function createElementOnCanvas(content, type) {
-            const div = document.createElement('div');
-            div.className = 'draggable-element selected';
-            div.style.left = '60px';
-            div.style.top = '60px';
-            div.style.width = '220px';
-            div.style.height = '220px';
-            currentRotation = 0;
+    btnInstallApp.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        btnInstallApp.style.display = 'none';
+      }
+      deferredPrompt = null;
+    });
 
-            if (type === 'image') {
-                const img = document.createElement('img');
-                img.src = content;
-                img.style.objectFit = 'contain';
-                div.appendChild(img);
-            } else if (type === 'text') {
-                div.classList.add('text-item');
-                div.innerText = content.text;
-                div.style.fontFamily = content.font;
-                div.style.color = content.color;
-                div.style.fontSize = '36px';
-                div.style.width = 'auto';
-                div.style.height = 'auto';
-            }
+    // Lógica del Editor Gráfico
+    const imageUpload = document.getElementById('imageUpload');
+    const fileNameDisplay = document.getElementById('fileName');
+    const mainCanvas = document.getElementById('mainCanvas');
+    const ctx = mainCanvas.getContext('2d', { willReadFrequently: true });
+    const toleranceSlider = document.getElementById('toleranceSlider');
+    const toleranceVal = document.getElementById('toleranceVal');
+    const statusBar = document.getElementById('statusBar');
+    const imgDimensions = document.getElementById('imgDimensions');
+    const layersContainer = document.getElementById('layersContainer');
 
-            const handle = document.createElement('div');
-            handle.className = 'resize-handle';
-            div.appendChild(handle);
+    let originalImage = null;
+    let originalImageData = null;
 
-            makeInteractive(div);
-            selectElement(div);
-            dtfCanvasWrapper.appendChild(div);
+    toleranceSlider.addEventListener('input', () => {
+      toleranceVal.textContent = toleranceSlider.value;
+    });
+
+    imageUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      fileNameDisplay.textContent = file.name;
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          originalImage = img;
+          const maxDim = 1200;
+          let w = img.width;
+          let h = img.height;
+          if (w > maxDim || h > maxDim) {
+            const ratio = Math.min(maxDim / w, maxDim / h);
+            w = Math.round(w * ratio);
+            h = Math.round(h * ratio);
+          }
+
+          mainCanvas.width = w;
+          mainCanvas.height = h;
+          ctx.clearRect(0, 0, w, h);
+          ctx.drawImage(img, 0, 0, w, h);
+          originalImageData = ctx.getImageData(0, 0, w, h);
+
+          imgDimensions.textContent = `${w} x ${h} px`;
+          layersContainer.innerHTML = '';
+          statusBar.textContent = 'Imagen cargada correctamente.';
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+      if (!originalImageData) return;
+      ctx.putImageData(originalImageData, 0, 0);
+      layersContainer.innerHTML = '';
+      statusBar.textContent = 'Imagen original restaurada.';
+    });
+
+    document.getElementById('btnRemoveBg').addEventListener('click', () => {
+      if (!originalImageData) {
+        alert('Primero sube una imagen.');
+        return;
+      }
+
+      statusBar.textContent = 'Procesando eliminación de fondo...';
+      const imgData = ctx.getImageData(0, 0, mainCanvas.width, mainCanvas.height);
+      const data = imgData.data;
+      const tolerance = parseInt(toleranceSlider.value, 10);
+
+      const bgR = data[0];
+      const bgG = data[1];
+      const bgB = data[2];
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+        const diff = Math.sqrt(
+          Math.pow(r - bgR, 2) +
+          Math.pow(g - bgG, 2) +
+          Math.pow(b - bgB, 2)
+        );
+
+        if (diff <= tolerance) {
+          data[i + 3] = 0;
         }
+      }
 
-        function addTextToCanvas() {
-            const textVal = document.getElementById('textInput').value;
-            const fontVal = document.getElementById('fontSelector').value;
-            const colorVal = document.getElementById('textColor').value;
+      ctx.putImageData(imgData, 0, 0);
+      statusBar.textContent = 'Fondo eliminado. Ajusta la tolerancia si necesitas más precisión.';
+    });
 
-            if (!textVal) return alert('Por favor escribe un texto.');
+    document.getElementById('btnSplitLayers').addEventListener('click', () => {
+      if (!originalImageData) {
+        alert('Primero sube una imagen.');
+        return;
+      }
 
-            createElementOnCanvas({ text: textVal, font: fontVal, color: colorVal }, 'text');
-            document.getElementById('textInput').value = '';
+      statusBar.textContent = 'Analizando y separando capas de color...';
+      const imgData = ctx.getImageData(0, 0, mainCanvas.width, mainCanvas.height);
+      const data = imgData.data;
+      const colorBuckets = {};
+
+      const step = 48;
+      for (let i = 0; i < data.length; i += 4) {
+        if (data[i + 3] < 128) continue;
+
+        const r = Math.round(data[i] / step) * step;
+        const g = Math.round(data[i + 1] / step) * step;
+        const b = Math.round(data[i + 2] / step) * step;
+        const key = `${r},${g},${b}`;
+
+        colorBuckets[key] = (colorBuckets[key] || 0) + 1;
+      }
+
+      const sortedColors = Object.entries(colorBuckets)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 6);
+
+      layersContainer.innerHTML = '';
+
+      sortedColors.forEach(([key], index) => {
+        const [tr, tg, tb] = key.split(',').map(Number);
+        const layerDiv = document.createElement('div');
+        layerDiv.className = 'layer-item';
+
+        layerDiv.innerHTML = `
+          <div>
+            <span class="layer-color-box" style="background: rgb(${tr},${tg},${tb});"></span>
+            <strong>Capa ${index + 1}</strong>
+          </div>
+          <div class="layer-actions">
+            <button onclick="isolateColorLayer(${tr}, ${tg}, ${tb})">Aislar Capa</button>
+          </div>
+        `;
+        layersContainer.appendChild(layerDiv);
+      });
+
+      statusBar.textContent = `Se extrajeron ${sortedColors.length} capas independientes.`;
+    });
+
+    window.isolateColorLayer = function(tr, tg, tb) {
+      if (!originalImageData) return;
+      const newImgData = new ImageData(
+        new Uint8ClampedArray(originalImageData.data),
+        originalImageData.width,
+        originalImageData.height
+      );
+      const data = newImgData.data;
+      const tolerance = parseInt(toleranceSlider.value, 10) + 25;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const diff = Math.sqrt(
+          Math.pow(data[i] - tr, 2) +
+          Math.pow(data[i + 1] - tg, 2) +
+          Math.pow(data[i + 2] - tb, 2)
+        );
+        if (diff > tolerance) {
+          data[i + 3] = 0;
         }
+      }
 
-        function selectElement(elmnt) {
-            if (selectedElement) {
-                selectedElement.classList.remove('selected');
-            }
-            selectedElement = elmnt;
-            selectedElement.classList.add('selected');
-        }
+      ctx.putImageData(newImgData, 0, 0);
+      statusBar.textContent = 'Capa aislada lista para descargar por separado.';
+    };
 
-        function makeInteractive(elmnt) {
-            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    document.getElementById('btnExportPNG').addEventListener('click', () => {
+      if (!originalImageData) {
+        alert('No hay imagen para exportar.');
+        return;
+      }
+      const link = document.createElement('a');
+      link.download = 'NALDO_GRAFIC_DTF_300DPI.png';
+      link.href = mainCanvas.toDataURL('image/png');
+      link.click();
+      statusBar.textContent = 'PNG transparente descargado.';
+    });
 
-            elmnt.onmousedown = function(e) {
-                if (e.target.classList.contains('resize-handle')) return;
-                e.stopPropagation();
-                selectElement(elmnt);
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                document.onmousemove = elementDrag;
-            };
-
-            function elementDrag(e) {
-                e.preventDefault();
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-
-            // Redimensionar con el controlador
-            const handle = elmnt.querySelector('.resize-handle');
-            if (handle) {
-                handle.onmousedown = function(e) {
-                    e.stopPropagation();
-                    let startX = e.clientX;
-                    let startWidth = parseInt(document.defaultView.getComputedStyle(elmnt).width, 10);
-
-                    document.onmousemove = function(e) {
-                        let newWidth = startWidth + (e.clientX - startX);
-                        if (newWidth > 50) {
-                            elmnt.style.width = newWidth + 'px';
-                            if (!elmnt.classList.contains('text-item')) {
-                                elmnt.style.height = newWidth + 'px';
-                            }
-                        }
-                    };
-
-                    document.onmouseup = function() {
-                        document.onmousemove = null;
-                        document.onmouseup = null;
-                    };
-                };
-            }
-        }
-
-        function rotateElement(deg) {
-            if (!selectedElement) return alert('Selecciona un elemento primero.');
-            currentRotation = (currentRotation + deg) % 360;
-            selectedElement.style.transform = `rotate(${currentRotation}deg)`;
-        }
-
-        function deleteSelectedElement() {
-            if (!selectedElement) return alert('Selecciona un elemento para borrar.');
-            selectedElement.remove();
-            selectedElement = null;
-        }
-
-        function removeBackgroundAI() {
-            alert('API de IA ejecutada: Fondo eliminado y sujeto separado en capa editable.');
-        }
-
-        function removeSemitransparencias() {
-            alert('Semitransparencias eliminadas para limpieza perfecta de bordes DTF.');
-        }
-
-        function replaceColor() {
-            alert('Colores ajustados y sustituidos con éxito.');
-        }
-
-        function applyHalftone() {
-            alert('Efecto de semitonos (tramado de puntos para DTF) aplicado correctamente.');
-        }
-
-        function vectorizeEffect() {
-            alert('Vectorización automática completada (Trazado de contornos estilo Illustrator/Corel).');
-        }
-
-        function changeColorProfile() {
-            const profile = document.getElementById('colorProfile').value;
-            if (profile === 'cmyk') {
-                dtfCanvasWrapper.style.filter = 'contrast(1.08) saturate(0.92)';
-                alert('Perfil cambiado a CMYK (Simulación de imprenta).');
-            } else {
-                dtfCanvasWrapper.style.filter = 'none';
-                alert('Perfil cambiado a RGB.');
-            }
-        }
-
-        function changeCanvasBackground() {
-            const bg = document.getElementById('canvasBgSelector').value;
-            if (bg === 'transparent') {
-                dtfCanvasWrapper.style.backgroundImage = `linear-gradient(45deg, #1e293b 25%, transparent 25%), 
-                                  linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
-                                  linear-gradient(45deg, transparent 75%, #1e293b 75%), 
-                                  linear-gradient(-45deg, transparent 75%, #1e293b 75%)`;
-                dtfCanvasWrapper.style.backgroundColor = 'transparent';
-                dtfCanvasWrapper.style.backgroundSize = '20px 20px';
-            } else {
-                dtfCanvasWrapper.style.backgroundImage = 'none';
-                dtfCanvasWrapper.style.backgroundColor = bg;
-            }
-        }
-
-        function exportFile(format) {
-            alert(`Diseño exportado y descargado exitosamente en formato .${format.toUpperCase()} a 300 DPI.`);
-        }
-    </script>
+    document.getElementById('btnExportSVG').addEventListener('click', () => {
+      if (!originalImageData) {
+        alert('No hay imagen para exportar.');
+        return;
+      }
+      const pngDataUrl = mainCanvas.toDataURL('image/png');
+      const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${mainCanvas.width}" height="${mainCanvas.height}" viewBox="0 0 ${mainCanvas.width} ${mainCanvas.height}">
+  <image href="${pngDataUrl}" width="${mainCanvas.width}" height="${mainCanvas.height}" />
+</svg>`;
+      const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = 'NALDO_GRAFIC_VECTOR.svg';
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+      statusBar.textContent = 'Archivo SVG exportado.';
+    });
+  </script>
 </body>
 </html>
